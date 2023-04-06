@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="pnt-html-formulario-portabilidad">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" media="none"
+        onload="if (media != 'all') media = 'all'">
+    <link href="vendor/materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+    <link href="css/buscadorPuntosRetiro.css" rel="stylesheet" type="text/css" />
+    <link href="icon/favicon.ico" rel="shortcut icon">
+    <title>Buscador Puntos de retiro</title>
+</head>
+
+<body id="pnt-body" class="pnt-body-portabilidad" onkeydown="if (event.keyCode == 9 && event.target.id == 'pnt-body') {
+    event.preventDefault()
+}">
+    <div class="pnt-pagina-container">
+        <div class="row">
+            <div id="pnt-app">
+                <buscador-puntos-retiro></buscador-puntos-retiro>
+            </div>
+        </div>
+    </div>
+    <template id="pnt-template-buscador-puntos-retiro">
+        <div class="">
+            <div class="pnt-buscador-container">
+                <div class="card row pnt-card-con-borde-de-color pnt-card-borde pnt-card-ancho">
+                    <div class="input-field col s12 m6">
+                        <select class="browser-default" v-validate="'required'" v-model='provinciaElegida'
+                            name="provincia">
+                            <option value="" disabled selected>¿En qu&eacute; provincia est&aacute;s?</option>
+                            <option v-for="provincia in listadoProvincias" v-bind:value='provincia.valor'
+                            v-bind:key="`provincia-pdr-${provincia.valor}`" v-text="provincia.nombre"></option>
+                        </select>
+                        <span class="pnt-mensaje-validacion-input">{{ errors.first('provincia') }}</span>
+                    </div>
+                    <div class="input-field col s12 m6" v-if="hayLocalidadesCargadas && provinciaElegida">
+                        <label @click="focusEnInput()" for="input-localidad" class="">Escrib&iacute; ac&aacute; tu
+                            localidad<span class="pnt-campo-obligatorio">*</span></label>
+                        <input id="input-localidad"
+                            v-validate="{required:true, validacion_localidad_punto_retiro: [listadoLocalidades]}"
+                            v-model="localidadElegida" type="text" list="listadoLocalidades" name="localidad"
+                            autocomplete="off" ref="localidad" />
+                        <datalist id="listadoLocalidades">
+                            <option v-for="localidad in listadoLocalidades" v-text="localidad.nombre"
+                                v-bind:key="`localidad-pdr-${localidad.id}`"></option>
+                        </datalist>
+                        <span class="pnt-mensaje-validacion-input">{{ errors.first('localidad') }}</span>
+                    </div>
+                </div>
+                <div class="card pnt-card-contenedor-pdr pnt-card-con-borde-de-color pnt-card-borde pnt-card-ancho"
+                    v-if="hayPuntosDeRetiroCargados && localidadElegidaPerteneceALocalidades"
+                    v-for="puntoDeRetiro in puntosDeRetiroDeLaLocalidadElegida" v-bind:key="`pdr-${puntoDeRetiro.id}`"
+                    v-bind:value='puntoDeRetiro.id'>
+                    <div class="pnt-contenedor-pdr-info"><i class="material-icons">store</i><span
+                            class="pnt-nombre-pdr">{{ puntoDeRetiro.nombre }}</span></div>
+                    <div class="pnt-contenedor-pdr-info"><i class="material-icons">location_on</i><span>{{
+                            puntoDeRetiro.direccion }}</span></div>
+                    <div v-if="puntoDeRetiro.horario !== null" class="pnt-contenedor-pdr-info"><i class="material-icons">access_time</i><span>{{
+                            puntoDeRetiro.horario }}</span></div>
+                </div>
+            </div>
+
+
+        </div>
+    </template>
+
+    <script src="vendor/vue/vue.js" type="text/javascript"></script>
+    <script src="vendor/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="vendor/materialize/js/materialize.min.js" type="text/javascript" defer></script>
+    <script src="vendor/vee-validate/vee-validate.min.js" type="text/javascript"></script>
+    <script src="vendor/vee-validate/vee-validate-locale.js" type="text/javascript"></script>
+    <script src="js/app/veeValidateConfig.js?version=<VERSION>" type="text/javascript"></script>
+
+    <script src="js/app/app.js?version=<VERSION>" type="text/javascript"></script>
+    <script src="js/app/service/utils.js?version=<VERSION>" type="text/javascript"></script>
+    <script src="js/app/service/nuevoChip.js?version=<VERSION>" type="text/javascript"></script>
+    <script src="js/app/ui/component/buscadorPuntosRetiro.js" type="module"></script>
+</body>
+
+</html>

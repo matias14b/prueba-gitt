@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Neon One";
+  src: url("../../fonts/referidosPortabilidadNuevo/neonone-webfont.woff2") format("woff2"),
+    url("../../fonts/referidosPortabilidadNuevo/neonone-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Texta";
+  src: url("../../fonts/referidosPortabilidadNuevo/texta-black-webfont.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Catamaran";
+  src: url("../../fonts/referidosPortabilidadNuevo/catamaran-bold-webfont.woff2") format("woff2"),
+    url("../../fonts/referidosPortabilidadNuevo/catamaran-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Catamaran";
+  src: url("../../fonts/referidosPortabilidadNuevo/catamaran-light-webfont.woff2") format("woff2"),
+    url("../../fonts/referidosPortabilidadNuevo/catamaran-light-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Catamaran";
+  src: url("../../fonts/referidosPortabilidadNuevo/catamaran-regular-webfont.woff2") format("woff2"),
+    url("../../fonts/referidosPortabilidadNuevo/catamaran-regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../fonts/referidosPortabilidadNuevo/roboto-bold-webfont.woff2") format("woff2"),
+    url("../../fonts/referidosPortabilidadNuevo/roboto-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../fonts/referidosPortabilidadNuevo/roboto-regular-webfont.woff2") format("woff2"),
+    url("../../fonts/referidosPortabilidadNuevo/roboto-regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../fonts/referidosPortabilidadNuevo/roboto-black-webfont.woff2") format("woff2"),
+    url("../../fonts/referidosPortabilidadNuevo/roboto-black-webfont.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

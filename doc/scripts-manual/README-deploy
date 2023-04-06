@@ -1,0 +1,7 @@
+################################################################################
+### Deploy
+################################################################################
+Para ejecutar el deploy manualmente hay que pasar el parametro del branch o tag
+a desplegar, caso contrario se desplegara el insertado por default
+
+./deploy.sh -v pre-produccion

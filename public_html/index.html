@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="es" class="pnt-html-formulario-portabilidad">
+
+<head>
+  <script defer src="vendor/vue-recaptcha/vue-recaptcha.min.js" type="text/javascript"></script>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-59WM8NL');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- anti-flicker snippet (recommended)  -->
+  <style>
+    .async-hide {
+      opacity: 0 !important
+    }
+  </style>
+  <script>(function (a, s, y, n, c, h, i, d, e) {
+      s.className += ' ' + y; h.start = 1 * new Date;
+      h.end = i = function () { s.className = s.className.replace(RegExp(' ?' + y), '') };
+      (a[n] = a[n] || []).hide = h; setTimeout(function () { i(); h.end = null }, c); h.timeout = c;
+    })(window, document.documentElement, 'async-hide', 'dataLayer', 4000,
+      { 'GTM-59WM8NL': true });</script>
+
+  <!-- Popups -->
+  <script src="https://3adb84d9a2654616974b9c881845bc90.js.ubembed.com" async></script>
+  <!-- End Popups -->
+
+  <meta name="theme-color" content="#FF0066">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Enterate como pasarte a Tuenti y mantener tu n&uacute;mero actual. Te indicamos cuales son los pasos en l&iacute;nea para pedir tu Chip Tuenti y activarlo. ¡Pedilo Ac&aacute;!">
+
+  <title>Pasate a Tuenti | Portabilidad | Tuenti Argentina</title>
+  <link rel="canonical" href="https://portabilidad.tuenti.com.ar/" />
+  <link href="icon/favicon.ico" rel="shortcut icon">
+
+  <!--Css-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" media="none"
+    onload="if (media != 'all')
+                          media = 'all'">
+  <link href="vendor/materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
+  <link href="vendor/animate/css/4.1.1/animate.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/base.css?version=<VERSION>" rel="stylesheet" type="text/css" />
+  <link href="css/nuevoFormulario/nuevaMarca.css" rel="stylesheet" type="text/css" />
+
+  <script defer src="https://www.google.com/recaptcha/api.js"></script>
+
+  <!--Google Search console-->
+  <meta name="google-site-verification" content="pbx0eG14mg4Db433yRVCvngXWOUnNJyV6K_Dwwyx37Q" />
+
+  <!-- Hotjar Tracking Code for https://www.tuenti.com.ar/ -->
+  <script defer>
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () {
+        (h.hj.q = h.hj.q || []).push(arguments)
+      };
+      h._hjSettings = { hjid: 1168834, hjsv: 6 };
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script');
+      r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+  </script>
+  <script defer src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit">
+  </script>
+</head>
+
+<body id="pnt-body" class="pnt-body-portabilidad" onkeydown="if (event.keyCode == 9 && event.target.id == 'pnt-body') {
+                event.preventDefault()
+            }">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59WM8NL" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="pnt-pagina-container">
+    <div class="row">
+      <div id="pnt-app">
+        <portabilidad></portabilidad>
+      </div>
+    </div>
+  </div>
+
+  <template id="pnt-template-portabilidad">
+    <div>
+      <portabilidad-banner-campania v-if="showBanner" ref="banner"></portabilidad-banner-campania>
+
+      <h1 v-if="showBanner" class="pnt-formulario-titulo"><b>¡Pasate a Tuenti!</b><br>Chip + Env&iacute;o gratis</h1>
+
+      <portabilidad-light-boxes ref="lightboxes"
+        v-bind:es-formulario-referido="esFormularioReferido"></portabilidad-light-boxes>
+
+      <div class="col s12 pnt-contenedor-card">
+        <div class="row pnt-js-contenedor-spinner" v-if="spinnerVisible">
+          <div class="pnt-fondo-spinner-tuenti">
+            <div class="pnt-contenedor-spinner-tuenti">
+              <img class="pnt-logo-spinner" src="img/logo-optimizado.jpg" alt="" />
+              <div class="preloader-wrapper big active pnt-wrapper-spinner-tuenti">
+                <div class="spinner-layer pnt-spinner-tuenti">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pnt-card pnt-card-porta-principal pnt-texto-tuenti center-align">
+          <span>* Antes de completar el formulario, ten&eacute; en cuenta que todav&iacute;a no contamos con E-SIM.
+          </span>
+        </div>
+        <div class="card pnt-card-con-borde-de-color pnt-card pnt-card-porta-principal">
+          <div class="card-content">
+            <portabilidad-stepper-horizontal :current-position="step"></portabilidad-stepper-horizontal>
+            <portabilidad-stepper-radial ref="portabilidadStepperRadial" :pasos-completos="step">
+            </portabilidad-stepper-radial>
+            <ul>
+              <li>
+                <div>
+                  <portabilidad-datos-personales v-bind:show-banner="showBanner"
+                    v-bind:es-formulario-referido="esFormularioReferido" ref="portabilidadDatosPersonales">
+                  </portabilidad-datos-personales>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <portabilidad-linea-a-portar v-on:toggle-spinner="toggleSpinner"
+                    v-bind:corresponde-pin="correspondePin" v-on:cambiar-operadora="cambiarOperadora"
+                    v-on:cambiar-numero-chip="cambiarNumeroChip" v-bind:es-testing="esTesting"
+                    @cambiooperadora="cambioOperadora($event)" ref="portabilidadLineaAPortar">
+                  </portabilidad-linea-a-portar>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <portabilidad-datos-dni ref="portabilidadDatosDni"></portabilidad-datos-dni>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <portabilidad-firma v-bind:contador-pin="contadorPin" v-bind:corresponde-pin="correspondePin"
+                    v-bind:es-testing="esTesting" ref="portabilidadFirma">
+                  </portabilidad-firma>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <portabilidad-typ v-bind:mensaje-error="mensajeError" v-bind:is-creada-con-exito="isCreadaConExito"
+                    v-bind:portabilidad-id="state.portabilidad.id" v-bind:token="state.token"
+                    v-bind:mail="state.portabilidad.cliente.email" v-bind:tipo-de-typ="tipoDeTyp" ref="portabilidadTYP">
+                  </portabilidad-typ>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="pnt-template-portabilidad-datos-personales">
+    <transition name="slide-fade">
+      <form id="pnt-js-formulario-datos-personales" v-show="esVisible">
+        <div class="row pnt-step-contenedor">
+          <div class="input-field col s12 m4 pnt-margin-bottom">
+            <input v-model="portabilidad.cliente.nombre" v-validate="'required|alpha_spaces|sin_insultos'"
+              id="pnt-js-nombre-nueva-linea" class="pnt-js-input-nueva-linea pnt-js-barra-progreso" name="nombre"
+              type="text" v-on:keydown.tab="prevenirCambioFoco('atras', $event)" />
+            <label for="pnt-js-nombre-nueva-linea">Nombre completo <span class="pnt-campo-obligatorio">*</span></label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('nombre') }}</span>
+          </div>
+          <div class="input-field col s12 m4 pnt-margin-bottom">
+            <input v-model="portabilidad.cliente.apellido" v-validate="'required|alpha_spaces|sin_insultos'"
+              id="pnt-js-apellido-nueva-linea" class="pnt-js-input-nueva-linea pnt-js-barra-progreso" name="apellido"
+              type="text" />
+            <label for="pnt-js-apellido-nueva-linea">Apellido(s) <span class="pnt-campo-obligatorio">*</span></label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('apellido') }}</span>
+          </div>
+          <div class="input-field col s12 m4 pnt-margin-bottom">
+            <input v-model="portabilidad.cliente.dniTitular" v-validate="'required|numeric|min:6|max:11'"
+              id="pnt-js-dni" class="pnt-js-input-nueva-linea" name="dni" type="tel" minlength="7" maxlength="11" />
+            <label for="pnt-js-dni">DNI <span class="pnt-campo-obligatorio">*</span></label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('dni') }}</span>
+          </div>
+        </div>
+        <div class="row pnt-step-contenedor">
+          <div class="input-field col s12 m6 pnt-div-fecha-nacimiento pnt-margin-bottom">
+            <label class="pnt-label-fecha-nacimiento">Fecha de nacimiento <span
+                class="pnt-campo-obligatorio">*</span></label>
+            <div class="pnt-input-group-fecha-nacimiento">
+              <input v-validate="'required|numeric|'" v-model="dia" @change="validarYAsignarFechaNacimiento()"
+                class="pnt-input-fecha-nacimiento" type="tel" placeholder="dd" maxlength="2"
+                @keyup="diaNacimientoCompleto()" name="fecha-nacimiento">
+              <span class="pnt-fecha-nacimiento-divisor">/</span>
+              <input v-validate="'required|numeric'" v-model="mes" @change="validarYAsignarFechaNacimiento()"
+                class="pnt-input-fecha-nacimiento" type="tel" placeholder="mm" maxlength="2" ref="mes"
+                @keyup="mesNacimientoCompleto()" name="fecha-nacimiento">
+              <span class="pnt-fecha-nacimiento-divisor">/</span>
+              <input v-validate="'required|numeric'" v-model="anio" @change="validarYAsignarFechaNacimiento()"
+                class="pnt-input-fecha-nacimiento" type="tel" placeholder="aaaa" maxlength="4" ref="anio"
+                @keyup="anioNacimientoCompleto()" name="fecha-nacimiento">
+              <input type="hidden" name="fecha-de-nacimiento" v-validate="'required|fecha_valida'"
+                v-model="fechaNacimientoAValidar">
+            </div>
+            <span class="pnt-mensaje-de-input pnt-mensaje-de-input-fecha-nacimiento pnt-mensaje-validacion-input">{{
+              errors.first('fecha-de-nacimiento') }}</span>
+          </div>
+          <div class="input-field col s12 m6 pnt-div-telefono-alternativo pnt-margin-bottom">
+            <input v-model="portabilidad.cliente.telefonoAlternativo" data-vv-as="teléfono alternativo"
+              v-validate="'numeric|length:10|linea_valida'" maxlength="10" ref="contacto"
+              id="pnt-js-telefono-nueva-linea" class="pnt-js-input-nueva-linea" name="telefono-alternativo"
+              type="tel" />
+            <label for="pnt-js-telefono-nueva-linea">N° de contacto (opcional)</label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('telefono-alternativo')
+              }}</span>
+          </div>
+        </div>
+        <div class="row pnt-step-contenedor">
+          <div class="input-field col s12 pnt-margin-bottom"
+            v-bind:class="{ 'm6' : esFormularioReferido | esFormularioCodigoPromocional }">
+            <input v-model="portabilidad.cliente.email" data-vv-as="correo electrónico"
+              v-validate="'required|email|sin_insultos'" id="pnt-js-email-nueva-linea"
+              class="pnt-js-input-nueva-linea pnt-js-barra-progreso" name="email" type="email"
+              v-on:keydown.tab="esMailUltimoCampo ? prevenirCambioFoco('adelante', $event) : ''" />
+            <label for="pnt-js-email-nueva-linea">¿Cu&aacute;l es tu mail? Para que sigas tu tr&aacute;mite<span
+                class="pnt-campo-obligatorio">*</span></label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('email') }}</span>
+          </div>
+          <div v-if="esFormularioCodigoPromocional" class="input-field col s12 m6 pnt-margin-bottom">
+            <input v-model="portabilidad.codigoPromocional" v-validate="'required|alpha_spaces|sin_insultos'"
+              id="pnt-js-codigo-promocional" class="pnt-js-input-nueva-linea pnt-js-barra-progreso"
+              name="codigo-promocional" type="text" v-on:keydown.tab="prevenirCambioFoco('adelante', $event)"
+              v-bind:disabled="codigoPromocionalEnParametro" />
+            <label for="pnt-js-codigo-promocional" v-bind:class="{ active: codigoPromocionalEnParametro }">C&oacute;digo
+              promocional <span class="pnt-campo-obligatorio">*</span></label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('codigo-promocional')
+              }}</span>
+          </div>
+          <div v-if="esFormularioReferido" class="input-field col s12 m6">
+            <input v-bind:disabled="codigoReferidoEnParametro || mensajeInputReferido === 'INFO_SPINNER'"
+              v-model="portabilidad.codigoReferido" v-validate="'required|numeric|length:10|linea_valida'"
+              maxlength="10" id="pnt-js-codigo-referido" class="pnt-js-input-nueva-linea pnt-js-barra-progreso"
+              name="codigo-referido" data-vv-as="número de referido" type="tel"
+              v-on:keydown.tab="prevenirCambioFoco('adelante', $event)" />
+            <label class="pnt-mensaje-de-input pnt-label-responsive" for="pnt-js-codigo-referido"
+              v-bind:class="{ active: codigoReferidoEnParametro }">N&uacute;mero de l&iacute;nea de la
+              persona que te invit&oacute; <span class="pnt-campo-obligatorio">*</span></label>
+            <portabilidad-input-spinner v-if="mensajeInputReferido === 'INFO_SPINNER'">
+            </portabilidad-input-spinner>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('codigo-referido') }}</span>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input"
+              v-if="mensajeInputReferido === 'ERROR_VALIDACION'">Poné el número con código de área, sin 0
+              y sin 15.</span>
+            <span class="pnt-mensaje-de-input pnt-mensaje-informativo-input"
+              v-if="mensajeInputReferido === 'INFO'">Número
+              válido.</span>
+            <span class="pnt-mensaje-de-input pnt-mensaje-informativo-input pnt-mensaje-input-con-spinner"
+              v-if="mensajeInputReferido === 'INFO_SPINNER'">Verificando...</span>
+            <span class="pnt-mensaje-de-input pnt-mensaje-informativo-input pnt-mensaje-advertencia-input"
+              v-if="mensajeInputReferido === 'ERROR_CONEXION'">¡Ups! No pudimos verificar el número por un
+              error inesperado. Seguí adelante sin beneficios o intentá de nuevo más tarde.</span>
+          </div>
+        </div>
+
+        <portabilidad-acciones :is-primer-paso="true" v-on:atras-step="$parent.atrasStep"
+          v-on:siguiente-step="$parent.siguienteStep" v-bind:is-siguiente-habilitado="isSiguienteHabilitado"
+          v-bind:is-atras-habilitado="isAtrasHabilitado" v-bind:is-atras-visible="isAtrasVisible"
+          v-bind:datos-del-paso="portabilidad"></portabilidad-acciones>
+      </form>
+    </transition>
+  </template>
+
+  <template id="pnt-template-portabilidad-linea-a-portar">
+    <transition name="slide-fade">
+      <div v-show="esVisible">
+        <form>
+          <div class="row pnt-step-contenedor">
+            <div class="input-field col s12">
+              <input v-model="linea.numeroLinea" v-validate="'required|numeric|length:10|linea_valida'" maxlength="10"
+                data-vv-as="número de línea" id="numeroLinea" class="pnt-js-input-formulario pnt-input-numerico"
+                type="tel" name="numeroLinea" />
+              <label for="numeroLinea">N&uacute;mero de L&iacute;nea <span
+                  class="pnt-campo-obligatorio">*</span></label>
+              <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('numeroLinea') }}
+              </span>
+              <p class="pnt-formulario-texto-mediano pnt-formulario-mt-sm pnt-formulario-ml-md"
+                v-if="linea.operadora && correspondePin">
+                <i class="material-icons pnt-formulario-texto-mediano-icono">info</i>
+                Te vamos a enviar un PIN por SMS para que lo ingreses en el &uacute;ltimo paso
+              </p>
+            </div>
+          </div>
+          <div>
+            <vue-recaptcha v-if="!esTesting" ref="invisibleRecaptcha" size="invisible" @verify="onCaptchaVerificado"
+              sitekey="6LceQc4UAAAAAD-rH5p6h1Nk4TvbkqKNpIWEvekz">
+            </vue-recaptcha>
+          </div>
+          <div class="row pnt-step-contenedor">
+            <div class="input-field col s12 m6 pnt-dropdown">
+              <select class="browser-default" v-model='linea.operadora' v-validate="'required'" name="operadora">
+                <option value="" disabled selected>¿Qu&eacute; operadora ten&eacute;s?</option>
+                <option value="Claro">Claro</option>
+                <option value="Personal">Personal</option>
+                <option value="Movistar">Movistar</option>
+              </select>
+              <label class="pnt-js-label-select">Operadora <span class="pnt-campo-obligatorio">*</span></label>
+              <!-- <div v-if="ofertas && ofertas.length" class="pnt-oferta-segmentada">
+                <span>Beneficio especial</span>
+                <i class="material-icons pnt-icono-oferta">star</i>
+              </div> -->
+              <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('operadora') }}</span>
+            </div>
+            <div class="input-field col s12 m6 pnt-dropdown">
+              <select class="browser-default" v-model='linea.plan' v-validate="'required'" name="plan">
+                <option value="" disabled selected>Eleg&iacute; tu plan actual</option>
+                <option value="prepago">Prepago o Tarjeta</option>
+                <option value="pospago">Con factura</option>
+              </select>
+              <label class="pnt-js-label-select">Plan <span class="pnt-campo-obligatorio">*</span></label>
+              <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('plan') }}</span>
+            </div>
+          </div>
+
+          <template v-if="!isSeleccionadaOpcionChip">
+            <p class="pnt-encabezado-paso"
+              :class="ocultarBotonesEnvioChip ? 'animate__animated animate__zoomOut': 'animate__animated animate__zoomIn'">
+              ¿Ya ten&eacute;s tu chip Tuenti?</p>
+            <div class="row pnt-container-button-nueva-linea pnt-container-button-nueva-linea-con-margenes"
+              :class="ocultarBotonesEnvioChip ? 'animate__animated animate__zoomOut': 'animate__animated animate__zoomIn'">
+              <div
+                class="waves-effect waves-light btn pnt-button-nueva-linea pnt-button-nueva-linea-con-icono pnt-button-nueva-linea-con-icono-inactivo pnt-contenedor-icono-obtener-chip"
+                @click="seleccionarTengoChip()" :class="botonDeshabilitado ? 'pnt-disable-disabled' : ''">
+                <div class="row pnt-boton-chip">
+                  <div class="col s12">
+                    <i class="material-icons pnt-icono-boton-con-icono">sim_card</i>
+                  </div>
+                  <div class="col m8 offset-m2 s12">
+                    <span class="center-align pnt-button-nueva-linea-texto">Ya tengo mi chip <br>Tuenti</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="waves-effect waves-light btn pnt-button-nueva-linea pnt-button-nueva-linea-con-icono pnt-button-nueva-linea-con-icono-inactivo pnt-contenedor-icono-obtener-chip"
+                @click="seleccionarRetiro()" :class="botonDeshabilitado ? 'pnt-disable-disabled' : ''">
+                <div class="row pnt-boton-chip">
+                  <div class="col s12">
+                    <img class="pnt-imagen-retiro" src="icon/punto-retiro-tuenti.svg" alt="Punto de retiro">
+                  </div>
+                  <div class="col m8 offset-m2 s12">
+                    <span class="center-align pnt-button-nueva-linea-texto">Retir&aacute; HOY tu chip
+                      <br>¡GRATIS!</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="waves-effect waves-light btn pnt-button-nueva-linea pnt-button-nueva-linea-con-icono pnt-button-nueva-linea-con-icono-inactivo pnt-contenedor-icono-obtener-chip"
+                @click="seleccionarDelivery()" :class="botonDeshabilitado ? 'pnt-disable-disabled' : ''">
+                <div class="row pnt-boton-chip">
+                  <div class="col s12">
+                    <img class="pnt-imagen-camion" src="icon/delivery-tuenti.svg" alt="Envio">
+                  </div>
+                  <div class="col m8 offset-m2 s12">
+                    <span class="center-align pnt-button-nueva-linea-texto">Te lo mandamos <br>¡GRATIS! de 1 a 5
+                      D&Iacute;AS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <div class="row">
+            <portabilidad-datos-numero-chip v-on:set-numero-chip="setNumeroChip" v-show="isActivoBotonTengoChip"
+              :class="ocultarOpcionChip ? 'animate__animated animate__zoomOut': 'animate__animated animate__zoomIn'">
+            </portabilidad-datos-numero-chip>
+
+            <portabilidad-datos-envio-chip v-on:set-envio="setEnvioChip" v-show="isActivoBotonDelivery"
+              :class="ocultarOpcionChip ? 'animate__animated animate__zoomOut': 'animate__animated animate__zoomIn'">
+            </portabilidad-datos-envio-chip>
+
+            <portabilidad-puntos-retiro v-on:set-punto-retiro="setPuntoRetiro" v-on:toggle-spinner="toggleSpinner"
+              v-show="isActivoBotonRetiro" v-bind:is-activo-boton-retiro="isActivoBotonRetiro"
+              :class="ocultarOpcionChip ? 'animate__animated animate__zoomOut': 'animate__animated animate__zoomIn'">
+            </portabilidad-puntos-retiro>
+          </div>
+        </form>
+
+        <portabilidad-acciones v-on:atras-step="$parent.atrasStep" v-on:siguiente-step="$parent.siguienteStep"
+          v-bind:is-siguiente-habilitado="isSiguienteHabilitado" v-bind:is-atras-habilitado="isAtrasHabilitado"
+          v-bind:datos-del-paso="datosDelPaso"></portabilidad-acciones>
+      </div>
+    </transition>
+  </template>
+
+  <template id="pnt-template-portabilidad-datos-numero-chip">
+    <div class="col s12 m8 offset-m2 pnt-container-campos-opcionales">
+      <div class="pnt-boton-cerrar-campos-opcionales center-align" @click="$parent.restaurarCamposOpcionales">X
+      </div>
+      <div class="pnt-step-contenedor">
+        <div class="input-field col s12">
+          <input v-model='numeroChip' v-validate="'required|numeric|length:19|chip_valido'" data-vv-as="número de chip"
+            id="numeroChip" class="pnt-input-numerico" name="numeroChip" type="tel" maxlength="19">
+          <label class="pnt-label-responsive" for="numeroChip" ref="labelNumeroChip">N&uacute;mero de chip
+            <a href="#modal-numero-chip-ayuda" class="modal-trigger"><i
+                class="tiny material-icons pnt-icono-tooltip pnt-icono-modal-numero-chip"
+                data-position="top">help</i></a>
+          </label>
+          <div id="modal-numero-chip-ayuda" class="modal pnt-modal-numero-chip">
+            <div class="pnt-div-modal-numero-chip-titulo">
+              <span class="pnt-modal-numero-chip-titulo">Encontr&aacute; tu n&uacute;mero de chip<br> abajo del
+                c&oacute;digo de barras de la tarjeta que recibiste:</span>
+            </div>
+            <div class="modal-content pnt-div-modal-numero-chip-content">
+              <img class='pnt-imagen-modal-numero-chip' src='img/encontrar-numero-chip-codigo-barras.png'>
+            </div>
+            <div class="modal-footer pnt-div-modal-numero-chip-footer">
+              <button type="button" class="modal-close waves-effect waves-dark btn pnt-button-siguiente">Cerrar</button>
+            </div>
+          </div>
+          <span class="pnt-mensaje-de-input-chip pnt-mensaje-validacion-input">{{ errors.first('numeroChip') }}</span>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="pnt-template-portabilidad-puntos-de-retiro">
+    <div class="col s12 m8 offset-m2 pnt-container-campos-opcionales" v-if="hayProvinciasCargadas">
+      <div class="pnt-boton-cerrar-campos-opcionales center-align" @click="$parent.restaurarCamposOpcionales">X
+      </div>
+      <p class="pnt-encabezado-paso">¿Por d&oacute;nde quer&eacute;s pasar a buscar tu chip Tuenti?</p>
+      <div id="pnt-contenedor" class="row pnt-step-contenedor">
+        <div class="input-field col s12 m6 pnt-dropdown">
+          <select class="browser-default" v-validate="'required'" @change="eliminarClaseActiveLabel()"
+            v-model='provinciaElegida' name="provincia">
+            <option value="" disabled selected>Eleg&iacute; una provincia</option>
+            <option v-for="provincia of listadoProvincias" v-bind:key="`prov-pdr-${provincia.valor}`"
+              v-bind:value='provincia.valor' v-text="provincia.nombre"></option>
+          </select>
+          <label class="pnt-js-label-select pnt-js-label-provincia-pdr active">¿En qu&eacute; provincia est&aacute;s?
+            <span class="pnt-campo-obligatorio">*</span></label>
+          <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('provincia') }}</span>
+        </div>
+        <div class="input-field col s12 m6 pnt-dropdown" v-if="hayLocalidadesCargadas && provinciaElegida">
+          <input type="text" v-validate="{required:true, validacion_localidad_punto_retiro: [listadoLocalidades]}"
+            v-model="localidadElegida" class="pnt-input-datalist" list="listadoLocalidades" name="localidad"
+            autocomplete="off" ref="localidad">
+          <span class="pnt-span-arrow"></span>
+          </input>
+          <datalist id="listadoLocalidades">
+            <option v-for="localidad in listadoLocalidades" v-text="localidad.nombre"
+              v-bind:key="`loc-pdr-${localidad.id}`">
+            </option>
+          </datalist>
+          <label class="pnt-js-label-select" @click="focusEnInput()">Escrib&iacute; ac&aacute; tu localidad <span
+              class="pnt-campo-obligatorio">*</span></label>
+          <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('localidad') }}</span>
+        </div>
+        <div class="input-field col s12 m12 pnt-dropdown"
+          v-if="hayPuntosDeRetiroCargados && localidadElegidaPerteneceALocalidades">
+          <select class="browser-default" v-validate="'required'"
+            v-model='solicitudChip.pedidoPuntoRetiroChip.puntoRetiroChip.id' name="puntoDeRetiro">
+            <option value="" disabled selected>¿Por d&oacute;nde quer&eacute;s pasar a buscar tu chip?
+            </option>
+            <option v-for="puntoDeRetiro of dropdownPuntosDeRetiro" v-bind:key="`pdr-${puntoDeRetiro.id}`"
+              v-bind:value='puntoDeRetiro.id' v-text="puntoDeRetiro.direccion"></option>
+          </select>
+          <label class="pnt-js-label-select">¿D&oacute;nde quer&eacute;s retirar tu chip? <span
+              class="pnt-campo-obligatorio">*</span></label>
+          <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('puntoDeRetiro') }}</span>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="pnt-template-portabilidad-datos-solicitud-chip">
+    <div class="col s12 m8 offset-m2 pnt-container-campos-opcionales">
+      <div class="pnt-boton-cerrar-campos-opcionales center-align" @click="$parent.restaurarCamposOpcionales">X
+      </div>
+      <p class="pnt-encabezado-paso">Tu chip + env&iacute;o GRATIS!</p>
+      <div id="pnt-contenedor" class="row pnt-step-contenedor">
+        <div class="input-field col s12 m6 pnt-dropdown">
+          <select class="browser-default" v-validate="'required'" v-model='solicitudChip.envioChip.localidad.provincia'
+            name="provincia">
+            <option value="" disabled selected>¿En qu&eacute; provincia viv&iacute;s?</option>
+            <option v-for="provincia of provincias" v-bind:key="`prov-envio-${provincia.valor}`"
+              v-bind:value='provincia.valor' v-text="provincia.nombre"></option>
+          </select>
+          <label class="pnt-js-label-select">Provincia <span class="pnt-campo-obligatorio">*</span></label>
+          <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('provincia') }}</span>
+        </div>
+        <div class="input-field col s12 m6 pnt-dropdown"
+          v-if="hayLocalidadesCargadas && solicitudChip.envioChip.localidad.provincia">
+          <input type="text" v-validate="{required:true, validacion_localidad: [solicitudChip]}"
+            v-model="solicitudChip.envioChip.localidad.nombre" list="localidades" class="pnt-input-datalist"
+            v-bind:disabled="!isLocalidadHabilitado" name="localidad" autocomplete="off" ref="localidad">
+          <span class="pnt-span-arrow"></span>
+          </input>
+          <datalist id="localidades">
+            <option v-for="localidad in localidades" v-text="localidad.nombre" v-bind:key="`loc-envio-${localidad.id}`">
+            </option>
+          </datalist>
+          <label class="pnt-js-label-select" @click="focusEnInput()">Escrib&iacute; tu
+            c&oacute;digo postal &oacute; localidad <span class="pnt-campo-obligatorio">*</span></label>
+          <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('localidad') }}</span>
+        </div>
+
+      </div>
+      <div v-if="localidadElegidaPerteneceALocalidades">
+        <div class="row pnt-step-contenedor">
+          <div class="input-field col s12 m6">
+            <input v-validate="'required|solo_simbolos_espanol|sin_insultos'" v-model="solicitudChip.envioChip.calle"
+              id="pnt-js-calle" class="pnt-js-input-nueva-linea pnt-js-barra-progreso" name="calle" type="text" />
+            <label for="pnt-js-calle">Calle <span class="pnt-campo-obligatorio">*</span></label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('calle') }}</span>
+          </div>
+          <div class="input-field col s12 m6">
+            <input v-validate="'required|numeric|max:6'" v-model="solicitudChip.envioChip.altura" id="pnt-js-altura"
+              class="pnt-js-input-nueva-linea pnt-js-barra-progreso" name="altura" type="text" />
+            <label for="pnt-js-altura">Altura <span class="pnt-campo-obligatorio">*</span></label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('altura') }}</span>
+          </div>
+        </div>
+        <div class="row pnt-step-contenedor">
+          <div class="input-field col s12 m6">
+            <input v-model="solicitudChip.envioChip.piso" v-validate="'sin_insultos'" id="pnt-js-piso" maxlength="20"
+              class="pnt-js-input-nueva-linea pnt-js-barra-progreso" name="piso" type="text" />
+            <label for="pnt-js-piso">Piso</label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('piso') }}</span>
+          </div>
+          <div class="input-field col s12 m6">
+            <input v-model="solicitudChip.envioChip.departamento" v-validate="'max:10|sin_insultos'"
+              id="pnt-js-departamento" class="pnt-js-input-nueva-linea" name="departamento" type="text" />
+            <label for="pnt-js-departamento">Departamento</label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('departamento') }}</span>
+          </div>
+        </div>
+        <div class="row pnt-step-contenedor">
+          <div class="input-field col s12">
+            <input v-model="solicitudChip.envioChip.observaciones" v-validate="'solo_simbolos_espanol|sin_insultos'"
+              maxlength="255" id="pnt-js-observaciones" class="pnt-js-input-nueva-linea pnt-js-barra-progreso"
+              name="observaciones" type="text" />
+            <label for="pnt-js-observaciones">Comentarios: oficina, casa, manzana</label>
+            <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('observaciones') }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="pnt-template-portabilidad-datos-dni">
+    <transition name="slide-fade">
+      <div v-show="esVisible">
+        <form>
+          <p class="pnt-encabezado-paso">¡No nos mandes selfies! El peso m&aacute;ximo de la foto es de 5 MB.</p>
+          <div class="row pnt-container-button-nueva-marca pnt-container-dni">
+            <div class="col s12 m6 l4 offset-l2 pnt-container-boton-frente">
+              <div>
+                <div v-on:click="buscarFotoFrente" v-bind:class="{'pnt-dni-completo' : frenteValido}"
+                  class="waves-effect waves-light btn pnt-button-nueva-marca pnt-button-nueva-marca-con-icono pnt-boton-carga-archivo pnt-button-nueva-marca-con-icono-inactivo">
+                  <div class="row">
+                    <div class="col s12">
+                      <i class="material-icons large" v-if="frenteValido">check_circle</i>
+                      <i class="material-icons large" v-else>picture_in_picture</i>
+                      <input class="hide pnt-js-frente" v-validate="'required|image|size:5120'" id="dniFotoFrente"
+                        v-on:change="obtenerFotoFrente" name="dniFrente" type="file"
+                        accept="image/jpg, image/jpeg, image/png" />
+                    </div>
+                    <div class="col s12 pnt-descripcion">
+                      <span class="center-align">Foto<br />frente<br />del DNI</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('dniFrente') }}</p>
+            </div>
+            <div class="col s12 m6 l4 pnt-container-boton-frente">
+              <div>
+                <div v-on:click="buscarFotoDorso" v-bind:class="{'pnt-dni-completo' : dorsoValido}"
+                  class="waves-effect waves-light btn pnt-button-nueva-marca pnt-button-nueva-marca-con-icono pnt-boton-carga-archivo pnt-button-nueva-marca-con-icono-inactivo">
+                  <div class="row">
+                    <div class="col s12">
+                      <i class="material-icons large" v-if="dorsoValido">check_circle</i>
+                      <i class="material-icons large" v-else>chrome_reader_mode</i>
+                      <input class="hide pnt-js-dorso" v-validate="'required|image|size:5120'" id="dniFotoDorso"
+                        v-on:change="obtenerFotoDorso" name="dniDorso" type="file"
+                        accept="image/jpg, image/jpeg, image/png" />
+                    </div>
+                    <div class="col s12 pnt-descripcion">
+                      <span class="center-align">Foto<br />dorso<br />del DNI</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('dniDorso') }}</p>
+            </div>
+          </div>
+        </form>
+        <portabilidad-acciones v-on:atras-step="$parent.atrasStep" v-on:siguiente-step="$parent.siguienteStep"
+          v-bind:is-siguiente-habilitado="isSiguienteHabilitado" v-bind:is-atras-habilitado="isAtrasHabilitado"
+          v-bind:datos-del-paso="datosDni"></portabilidad-acciones>
+      </div>
+    </transition>
+  </template>
+
+  <template id="pnt-template-portabilidad-firma">
+    <transition name="slide-fade">
+      <div class="pnt-container-firma" v-show="esVisible">
+        <div id="signature-pad" class="signature-pad row pnt-signature-pad">
+          <div class="pnt-firma-digital col" :class="{ 's12 l6': esResolucionDesktop }">
+            <div class="container">
+              <div class="pnt-descripcion-firma description center-align">
+                Firmá dentro del recuadro con el mouse o con el dedo.<br><b> La firma tiene que ser lo más parecida a la
+                  de tu DNI</b>.
+              </div>
+            </div>
+            <div class="container center-align pnt-pad-firma-formulario pnt-centrar-canvas">
+              <canvas id="pad-firma" height="200" width="400" class="pnt-pad-firma"
+                style="touch-action: none;"></canvas>
+            </div>
+            <div class="row">
+              <div class="signature-pad-footer">
+                <div class="signature-pad-actions center-align">
+                  <button type="button" class="waves-effect waves-dark btn pnt-button-volver-a-firmar"
+                    @click="limpiarFirma" v-bind:disabled="!isFirmaHecha">Volver a firmar <i
+                      class="material-icons pnt-icono-boton-volver-a-firmar">delete_forever</i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col s12 l6">
+            <p class="pnt-encabezado-paso pnt-encabezado-paso-responsive" v-show="correspondePin">Ingres&aacute;
+              ac&aacute; los datos del PIN que te enviamos por SMS</p>
+            <div class="row" v-show="correspondePin">
+              <div class="col s12 l6">
+                <div class="input-field">
+                  <input v-validate="'numeric|length:4'" v-model="portabilidad.numeroPin" maxlength="4"
+                    data-vv-as="número de PIN" id="numeroPin" class="pnt-js-input-formulario pnt-input-numerico"
+                    type="tel" name="numeroPin" />
+                  <label for="numeroPin" class="pnt-label-chico">PIN</label>
+                  <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('numeroPin') }}</span>
+                </div>
+              </div>
+              <div class="col s12 l6">
+                <div class="input-field">
+                  <input v-validate="'date_format:dd/MM/yyyy'" v-model="portabilidad.fechaVencimientoPin"
+                    data-vv-as="fecha de vencimiento de PIN" id="fechaVencimientoPin"
+                    class="datepicker pnt-cursor-default pnt-js-datepicker-fecha-vencimiento-pin pnt-js-input-formulario"
+                    type="text" name="fechaVencimientoPin" />
+                  <label id="pnt-js-label-fecha-vencimiento-pin" for="fechaVencimientoPin"
+                    class="pnt-label-chico pnt-cursor-default">Fecha de vencimiento del PIN</label>
+                  <span class="pnt-mensaje-de-input pnt-mensaje-validacion-input">{{ errors.first('fechaVencimientoPin')
+                    }}</span>
+                  <i class="material-icons pnt-icono-borrar-input"
+                    @click="borrarCampoFechaVencimientoPin">remove_circle_outline</i>
+                </div>
+              </div>
+            </div>
+            <div class="row" v-if="isContadorVisible">
+              <div class="col s12 l12 pnt-formulario-mt-md">
+                <p class="pnt-formulario-texto-chico pnt-formulario-texto-destacado">¿No te lleg&oacute; el
+                  PIN?</p>
+                <p class="pnt-formulario-texto-chico">
+                  Esperalo un poco más. Te vamos a dejar pasar en
+                  <span class="pnt-formulario-contador-pin">{{ contadorPin }}</span>
+                  <span v-if="contadorPin > 1">segundos</span><span v-else>segundo</span>
+                </p>
+              </div>
+            </div>
+            <div class="row" v-if="isMensajePinNoLlegoVisible">
+              <div class="col s12 l12">
+                <p class="pnt-formulario-texto-chico pnt-formulario-texto-destacado">Si el PIN no
+                  lleg&oacute;,
+                  segu&iacute; adelante. Luego lo vas a poder ingresar desde nuestra web de
+                  autogesti&oacute;n. Dej&aacute; los dos campos vac&iacute;os o complet&aacute; los dos.</p>
+              </div>
+            </div>
+            <div class="pnt-terminos-condiciones row center-align" v-show="isCaptchaCompleto">
+              <p>
+                <label>
+                  <input type="checkbox" v-model="terminosYCondicionesAceptados" class="filled-in" />
+                  <span>Acepto los <a href="https://www.tuenti.com.ar/legales" target="_blank">términos y
+                      condiciones</a></span>
+                </label>
+              </p>
+            </div>
+            <div class="row" v-show="isCaptchaVisible">
+              <div class="col s12 l12 pnt-container-button-nueva-linea">
+                <vue-recaptcha v-if="!esTesting" class="pnt-recaptcha g-recaptcha tuenti-recaptcha" ref="recaptcha"
+                  @verify="onCaptchaVerificado" sitekey="6LeijLkUAAAAAIMA3k4XQkTL1pEiwcf1aiq6U7Df"
+                  @expired="onCatpchaExpirado" v-bind:size="tamanioCaptcha">
+                </vue-recaptcha>
+              </div>
+            </div>
+          </div>
+        </div>
+        <portabilidad-acciones v-on:atras-step="$parent.atrasStep" v-on:siguiente-step="$parent.siguienteStep"
+          v-bind:is-siguiente-habilitado="isSiguienteHabilitado" v-bind:is-atras-habilitado="isAtrasHabilitado"
+          v-bind:datos-del-paso="datosDelPaso" texto-boton-siguiente="¡Listo!"></portabilidad-acciones>
+      </div>
+    </transition>
+  </template>
+
+  <template id="pnt-template-portabilidad-typ">
+    <transition name="slide-fade">
+      <div v-show="esVisible" class="pnt-centrar-typ">
+        <div class="card-panel pnt-thank-you-page-portabilidad s12 offset-m2 m8" v-if="isCreadaConExito">
+          <template v-if="tipoDeTyp === 'retiro'">
+            <div class="row">
+              <i class="material-icons col s12 pnt-icono-typ">check_circle</i>
+            </div>
+            <div class="row">
+              <span class="col s12 center-align pnt-titulo-typ pnt-js-titulo-typ strong">¡Listo!</span>
+            </div>
+            <div class="row">
+              <span class="col s12 center-align pnt-js-mensaje-typ pnt-texto-typ pnt-texto-strong">Tu tr&aacute;mite es
+                el N° {{ portabilidadId }}</span>
+            </div>
+            <div class="row">
+              <span class="col s12 center-align pnt-js-subtitulo-typ pnt-texto-typ">Corr&eacute; a buscar tu chip, pero
+                no lo
+                actives!</span>
+            </div>
+            <div class="row">
+              <div class="col s12 center-align pnt-texto-typ pnt-js-mensaje-typ-info">Te vamos a enviar un
+                mail con + info a </div>
+            </div>
+            <div class="row">
+              <div class="col s12 center-align pnt-texto-typ pnt-email-typ pnt-js-mensaje-mail">
+                {{ mail }}</div>
+            </div>
+            <div class="row">
+              <div class="col s12 center-align pnt-texto-typ pnt-js-mensaje-typ-info">Importante: Revis&aacute; la
+                bandeja de spam</div>
+            </div>
+            <div v-if="token">
+              <div class="row">
+                <span class="col s12 center-align pnt-js-mensaje-typ-adicional pnt-mensaje-typ-adicional">Pod&eacute;s
+                  seguir tu tr&aacute;mite en <b>AUTOGESTI&Oacute;N</b> &oacute; escribinos en nuestras redes
+                  sociales.</span>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <a class="col s12 waves-effect waves-light btn pnt-button-nueva-linea pnt-button-segui-tu-tramite"
+                    @click="pushearEventoAnalytics" target="_blank">SEGU&Iacute; TU TR&Aacute;MITE</a>
+                </div>
+              </div>
+            </div>
+          </template>
+          <template v-else-if="tipoDeTyp === 'delivery'">
+            <div class="pnt-centrar-typ">
+              <div class="row">
+                <i class="material-icons col s12 pnt-icono-typ">check_circle</i>
+              </div>
+              <div class="row">
+                <span class="col s12 center-align pnt-titulo-typ pnt-js-titulo-typ strong">¡Listo!</span>
+              </div>
+              <div class="row">
+                <span class="col s12 center-align pnt-js-mensaje-typ pnt-texto-typ pnt-texto-strong">Tu tr&aacute;mite
+                  es
+                  el N° {{ portabilidadId }}</span>
+              </div>
+              <div class="row">
+                <span class="col s12 center-align pnt-js-subtitulo-typ pnt-texto-typ">Ya le avisamos al correo que te
+                  env&iacute;e
+                  un Chip, pero NO lo
+                  pongas en tu celu.</span>
+              </div>
+              <div class="row">
+                <div class="col s12 center-align pnt-texto-typ pnt-js-mensaje-typ-info">Te vamos a mandar un
+                  mail con + info a</div>
+              </div>
+              <div class="row">
+                <div class="col s12 center-align pnt-texto-typ pnt-email-typ pnt-js-mensaje-mail">
+                  {{ mail }}</div>
+              </div>
+              <div class="row">
+                <div class="col s12 center-align pnt-texto-typ pnt-js-mensaje-typ-info">Importante: Revis&aacute; la
+                  bandeja de spam</div>
+              </div>
+              <div v-if="token">
+                <div class="row">
+                  <span class="col s12 center-align pnt-js-mensaje-typ-adicional pnt-mensaje-typ-adicional">Pod&eacute;s
+                    seguir tu tr&aacute;mite en <b>AUTOGESTI&Oacute;N</b> &oacute; escribinos en nuestras redes
+                    sociales.</span>
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <a class="col s12 waves-effect waves-light btn pnt-button-nueva-linea pnt-button-segui-tu-tramite"
+                      @click="pushearEventoAnalytics" target="_blank">SEGU&Iacute; TU TR&Aacute;MITE</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+          <template v-else>
+            <div v-show="esVisible" class="pnt-centrar-typ">
+              <div class="row">
+                <i class="material-icons col s12 pnt-icono-typ">check_circle</i>
+              </div>
+              <div class="row">
+                <span class="col s12 center-align pnt-titulo-typ pnt-js-titulo-typ strong">¡Listo!</span>
+              </div>
+              <div class="row">
+                <span class="col s12 center-align pnt-js-mensaje-typ pnt-texto-typ pnt-texto-strong">Tu tr&aacute;mite
+                  es
+                  el N° {{ portabilidadId }}</span>
+              </div>
+              <div class="row">
+                <span class="col s12 center-align pnt-js-subtitulo-typ pnt-texto-typ">Ya tenemos toda la info para
+                  iniciar el tr&aacute;mite. NO pongas el chip en tu celu. Nosotros te avisamos! </span>
+              </div>
+              <div class="row">
+                <div class="col s12 center-align pnt-texto-typ pnt-js-mensaje-typ-info">Te vamos a mandar un
+                  mail
+                  con + info a</div>
+              </div>
+              <div class="row">
+                <div class="col s12 center-align pnt-texto-typ pnt-email-typ pnt-js-mensaje-mail">
+                  {{ mail }}</div>
+              </div>
+              <div class="row">
+                <span class="col s12 center-align pnt-js-subtitulo-typ pnt-texto-typ">Importante: Revisá la bandeja de
+                  spam</span>
+              </div>
+              <div v-if="token">
+                <div class="row">
+                  <span class="col s12 center-align pnt-js-mensaje-typ-adicional pnt-mensaje-typ-adicional">
+                    Pod&eacute;s seguir tu tr&aacute;mite en <b>AUTOGESTI&Oacute;N</b> &oacute; escribirnos en nuestras
+                    redes
+                    sociales.</span>
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <a class="col s12 waves-effect waves-light btn pnt-button-nueva-linea pnt-button-segui-tu-tramite"
+                      @click="pushearEventoAnalytics" target="_blank">SEGU&Iacute; TU TR&Aacute;MITE</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+        <div class="card-panel pnt-thank-you-page-portabilidad s12  offset-m2 m8" v-else>
+          <div class="row">
+            <i class="material-icons col s12 pnt-icono-typ">error</i>
+          </div>
+          <div class="row">
+            <span class="col s12 center-align pnt-titulo-typ pnt-js-titulo-typ strong">¡Ups!</span>
+          </div>
+          <div class="row">
+            <span class="col s12 center-align pnt-js-subtitulo-typ pnt-texto-typ">Hubo un problema al crear tu
+              portabilidad.</span>
+          </div>
+          <div class="row">
+            <span class="col s12 center-align pnt-js-mensaje-typ pnt-texto-typ pnt-texto-strong">Prestá atención al
+              siguiente mensaje de error:</span>
+          </div>
+          <div class="row">
+            <div class="col s12 l10 offset-l1 center-align pnt-texto-typ pnt-js-mensaje-typ-info">{{ mensajeError }}
+            </div>
+          </div>
+          <portabilidad-acciones v-on:atras-step="atrasStep" v-on:siguiente-step="$parent.siguienteStep"
+            v-bind:is-siguiente-visible="isSiguienteVisible"></portabilidad-acciones>
+        </div>
+      </div>
+    </transition>
+  </template>
+
+  <template id="pnt-template-portabilidad-acciones">
+    <div class="row">
+      <div class="step-actions pnt-step-actions">
+        <button type="button" @click="siguiente" v-bind:disabled="!isSiguienteHabilitado" v-show="isPrimerPaso"
+          class="waves-effect waves-dark btn pnt-button-siguiente pnt-button-siguiente-nuevo">Siguiente<i
+            class="material-icons pnt-icono-boton-siguiente">chevron_right</i></button>
+        <button type="button" @click="siguiente" v-bind:disabled="!isSiguienteHabilitado"
+          v-show="isSiguienteVisible && !isPrimerPaso"
+          class="waves-effect waves-dark btn pnt-button-siguiente pnt-button-siguiente-nuevo pnt-pasos-intermedios">{{
+          textoBotonSiguiente }}<i v-if="textoBotonSiguiente === 'Siguiente'"
+            class="material-icons pnt-icono-boton-siguiente">chevron_right</i></button>
+        <button @click="atras" v-bind:disabled="!isAtrasHabilitado" v-show="isAtrasVisible"
+          class="waves-effect waves-dark btn pnt-button-volver-a-atras previous-step pnt-button-atras-nuevo"><i
+            class="material-icons">chevron_left</i> Volver</button>
+      </div>
+    </div>
+  </template>
+
+
+  <template id="pnt-template-portabilidad-banner-campania">
+    <div class="pnt-div-banner-portabilidad"></div>
+  </template>
+
+  <template id="pnt-template-portabilidad-spinner-de-input">
+    <div class="preloader-wrapper active pnt-spinner-muy-pequenio pnt-spinner-de-input">
+      <div class="spinner-layer pnt-spinner-pitaya">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="pnt-template-stepper-radial">
+    <div class="col s12 pnt-stepper-radial" v-show="esVisible">
+      <vue-radial-progress :diameter="diametro" :completed-steps="pasosCompletos + 1" :total-steps="totalDePasos"
+        :start-color="color" :stop-color="color" :inner-stroke-color="colorDeFondo" :inner-stoke-width="10"
+        :stroke-width="10" :animate-speed="250">
+        <p>{{ pasosCompletos + 1 }} de {{ totalDePasos }}</p>
+      </vue-radial-progress>
+      <p class="pnt-encabezado-paso">{{ titulo }}</p>
+    </div>
+  </template>
+
+  <template id="pnt-template-stepper-horizontal">
+    <div class="stepper pnt-stepper-horizontal">
+      <div class="top">
+        <div v-for="(item, index) in options.headers" :key="index" :class="{'step-header': true, 'active': index <= currentPosition
+              ,'end': index === options.headers.length}">
+          <div class="header-indicator">
+            <div class="step-header-content">
+              {{index+1}}
+            </div>
+          </div>
+          <div :class="{'title': true}">
+            {{item.title}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="pnt-template-light-boxes">
+    <div>
+      <div class="pnt-div-info-linea-nueva-buttons">
+        <div>
+          <button data-target="modal-que-es-tuenti" @click="abrirModal"
+            class="waves-effect waves-dark btn pnt-button-siguiente pnt-button-info-linea-nueva">¿Por
+            qu&eacute; Tuenti?</button>
+        </div>
+        <div v-show="hayPromocion">
+          <button data-target="modal-combo" @click="abrirModal"
+            class="waves-effect waves-dark btn pnt-button-siguiente pnt-button-info-linea-nueva"
+            :class="promoOperadora">PROMO
+            BIENVENIDA</button>
+        </div>
+        <div v-show="hayPreguntas">
+          <button data-target="modal-preguntas" @click="abrirModal"
+            class="waves-effect waves-dark btn pnt-button-siguiente pnt-button-info-linea-nueva">Preguntas
+            frecuentes</button>
+        </div>
+      </div>
+      <div id="modal-que-es-tuenti" class="modal pnt-modal-info-linea-nueva">
+        <button class="btn pnt-button-cerrar-modal" @click="cerrarModal"
+          data-cerrar-modal="modal-que-es-tuenti">X</button>
+        <div class="pnt-div-modal-info-linea-nueva-titulo">
+          <span class="pnt-span-modal-info-linea-nueva-titulo">¿Por qu&eacute; Tuenti?</span>
+        </div>
+        <div class="pnt-div-modal-info-linea-nueva-subtitulo">
+          <span class="pnt-span-modal-info-linea-nueva-subtitulo">Somos la telefon&iacute;a m&oacute;vil 100% digital,
+            con
+            la libertad de un servicio prepago pero con la comodidad de los combos mensuales.</span>
+        </div>
+        <div class="modal-content pnt-div-info-linea-nueva">
+          <div class="pnt-div-contenedor-modal-que-es-tuenti">
+            <div class="pnt-div-contenido-modal-que-es-tuenti">
+              <img src="img/iconos_sin_contratos.png" class="pnt-imagen-por-que-tuenti" alt="">
+              <span class="pnt-span-modal-info-linea-nueva-subtitulo">Sin facturas ni letra chica. <br> Sin sorpresas a
+                fin de mes.</span>
+            </div>
+            <div class="pnt-div-contenido-modal-que-es-tuenti">
+              <img src="img/iconos_mano.png" class="pnt-imagen-por-que-tuenti" alt="">
+              <span class="pnt-span-modal-info-linea-nueva-subtitulo">100% online.<br> Atenci&oacute;n 24/7 en la app o
+                redes sociales.</span>
+            </div>
+            <div class="pnt-div-contenido-modal-que-es-tuenti">
+              <img src="img/iconos_delivery.png" class="pnt-imagen-por-que-tuenti" alt="">
+              <span class="pnt-span-modal-info-linea-nueva-subtitulo">Chip con env&iacute;o GRATIS <br> Tambi&eacute;n
+                lo pod&eacute;s retirar.</span>
+            </div>
+            <div class="pnt-div-contenido-modal-que-es-tuenti">
+              <img src="img/iconos_recarga.png" class="pnt-imagen-por-que-tuenti" alt="">
+              <span class="pnt-span-modal-info-linea-nueva-subtitulo">Recarg&aacute;s lo que quer&eacute;s <br>¡Sos
+                libre!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="modal-combo" class="modal pnt-modal-info-linea-nueva">
+        <button class="btn pnt-button-cerrar-modal" @click="cerrarModal" data-cerrar-modal="modal-combo">X</button>
+        <div class="pnt-div-modal-info-linea-nueva-titulo">
+          <span class="pnt-span-modal-info-linea-nueva-titulo">PROMO BIENVENIDA</span>
+        </div>
+        <div class="pnt-div-modal-info-linea-nueva-subtitulo">
+          <span class="pnt-span-modal-info-linea-nueva-subtitulo">{{ mensajeInicio }}</span>
+        </div>
+        <div class="pnt-info-combos">
+          <div class="modal-content pnt-div-contenedor-modal-combo">
+            <div class="pnt-div-contenido-modal-combo">
+              <span class="pnt-span-modal-combo" v-html="promoHtml"></span>
+            </div>
+          </div>
+        </div>
+        <div class="pnt-div-modal-info-linea-nueva-subtitulo">
+          <span class="pnt-span-modal-info-linea-nueva-subtitulo">{{ mensajeFin }}</span>
+        </div>
+      </div>
+      <div id="modal-preguntas" class="modal pnt-modal-info-linea-nueva">
+        <button class="btn pnt-button-cerrar-modal" @click="cerrarModal" data-cerrar-modal="modal-preguntas">X</button>
+        <div class="pnt-div-modal-info-linea-nueva-titulo">
+          <span class="pnt-span-modal-info-linea-nueva-titulo">Preguntas Frecuentes</span>
+        </div>
+        <div class="modal-content pnt-div-contenedor-modal-preguntas" v-html="preguntasHtml"></div>
+      </div>
+    </div>
+  </template>
+
+  <script type="text/javascript">
+    var MouseStats_Commands = MouseStats_Commands ? MouseStats_Commands : [];
+    (function () {
+      function b() {
+        if (void 0 == document.getElementById("__mstrkscpt")) {
+          var a = document.createElement("script");
+          a.type = "text/javascript";
+          a.id = "__mstrkscpt";
+          a.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www2") + ".mousestats.com/js/5/4/5413269993888683466.js?" + Math.floor((new Date).getTime() / 6E5);
+          a.async = !0;
+          a.defer = !0;
+          (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(a)
+        }
+      }
+      window.attachEvent ? window.attachEvent("onload", b) : window.addEventListener("load", b, !1);
+      "complete" === document.readyState && b()
+    })();
+  </script>
+
+  <script src="vendor/moment/moment.min.js" type="text/javascript"></script>
+  <script src="vendor/jquery/jquery.min.js" type="text/javascript"></script>
+  <script src="vendor/materialize/js/materialize.min.js" type="text/javascript" defer></script>
+  <script src="vendor/vue/vue.js" type="text/javascript"></script>
+  <script>Vue.config.productionTip = false;</script>
+  <script src="vendor/axios/axios.min.js" type="text/javascript"></script>
+  <script src="vendor/bluebird/bluebird.min.js" type="text/javascript"></script>
+  <script src="vendor/signature_pad/signature_pad.min.js" type="text/javascript"></script>
+  <script src="vendor/vee-validate/vee-validate.min.js" type="text/javascript"></script>
+  <script src="vendor/vee-validate/vee-validate-locale.js" type="text/javascript"></script>
+  <script src="vendor/pica/pica.min.js" type="text/javascript"></script>
+  <script src="vendor/vue-radial-progress/vue-radial-progress.min.js" type="text/javascript"></script>
+
+  <script src="js/app/veeValidateConfig.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/app.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/utils.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/portabilidad.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/prePortabilidad.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/localidad.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/pin.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/analytics.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/nuevoChip.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/referido.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/discord.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/ofertaSegmentada.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/service/campanias.js?version=<VERSION>" type="text/javascript"></script>
+
+  <script src="js/app/ui/views/utils.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidad.js?version=<VERSION>" type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadDatosPersonales.js?version=<VERSION>"
+    type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadDatosEnvioChip.js?version=<VERSION>"
+    type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadLineaAPortar.js?version=<VERSION>"
+    type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadDatosDNI.js?version=<VERSION>" type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadFirma.js?version=<VERSION>" type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadTYP.js?version=<VERSION>" type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadAcciones.js?version=<VERSION>" type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadStepperRadial.js?version=<VERSION>"
+    type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadStepperHorizontal.js?version=<VERSION>"
+    type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadBannerCampania.js?version=<VERSION>" type="module"></script>
+  <script src="js/app/ui/component/nuevoFormulario/portabilidadLightBoxes.js?version=<VERSION>" type="module"></script>
+  <script src="js/app/ui/component/portabilidadBanner.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/ui/component/portabilidadPuntosRetiro.js?version=<VERSION>" type="module"></script>
+  <script src="js/app/ui/component/portabilidadDatosNumeroChip.js?version=<VERSION>" type="text/javascript"></script>
+  <script src="js/app/ui/component/portabilidadInputSpinner.js?version=<VERSION>" type="text/javascript"></script>
+
+  <!-- Precarga de imagenes -->
+  <div style="display:none; visibility:hidden;">
+    <img src="img/logo-optimizado.jpg" alt="" />
+  </div>
+  <!-- MouseStats:Begin -->
+  <script
+    type="text/javascript">var MouseStats_Commands = MouseStats_Commands ? MouseStats_Commands : []; (function () { function b() { if (void 0 == document.getElementById("mstrkscpt")) { var a = document.createElement("script"); a.type = "text/javascript"; a.id = "mstrkscpt"; a.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www2") + ".mousestats.com/js/5/0/5003389647983583548.js?" + Math.floor((new Date).getTime() / 6E5); a.async = !0; a.defer = !0; (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(a) } } window.attachEvent ? window.attachEvent("onload", b) : window.addEventListener("load", b, !1); "complete" === document.readyState && b() })(); </script>
+  <!-- MouseStats:End -->
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+stages:
+  - dev_deploy
+  - dev_test
+  - produccion_deploy
+
+.job_dev_template:
+  stage: dev_deploy
+  script:
+    - chmod u+x doc/pipeline/ -R
+    - ./doc/pipeline/deploy-dev.sh
+  environment:
+    name: dev/$CI_COMMIT_BRANCH
+    url: https://portabilidad.tuenti.dev.somospnt.com/  
+  tags:
+    - nodo-dev
+
+dev_deploy_master:
+  only:
+    - master
+    - pre-produccion
+  extends: .job_dev_template
+
+dev_deploy_branches:
+  only:
+    - branches
+  when: manual
+  extends: .job_dev_template
+
+trigger_test:
+  stage: dev_test
+  only:
+    - master
+    - pre-produccion
+  trigger:
+    project: somospnt/tuenti/integrador-tuenti-test-cypress
+    strategy: depend
+    
+produccion_deploy:
+  stage: produccion_deploy
+  script:
+    - chmod u+x doc/pipeline/ -R
+    - ./doc/pipeline/deploy-prod.sh $CI_COMMIT_TAG
+  environment:
+    name: produccion/$CI_COMMIT_TAG
+    url: https://portabilidad.tuenti.com.ar/  
+  when: manual
+  only:
+    - tags  
+  tags:
+    - nodo-tuenti

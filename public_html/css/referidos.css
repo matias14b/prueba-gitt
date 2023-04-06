@@ -1,0 +1,120 @@
+@font-face {
+    font-family: Catamaran;
+    src: url(../fonts/CatamaranRegular.ttf);
+    font-display: swap; 
+}
+
+body { 
+    margin:0;
+}
+
+.pnt-fullscreen-image-container {
+    display: flex;
+    flex-flow: column;
+}
+
+.pnt-fullscreen-image {
+    width:100%;
+    height:100%;
+}
+
+.pnt-body-referidos-LN {
+    background-color: #9e003f;
+}
+
+.pnt-contenedor-boton-referidos-LN {
+    background: url('../img/landing-referidos-LN_2.jpg') no-repeat center center;
+    background-size:100% 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+}
+
+.pnt-contenedor-boton-referidos span, .pnt-contenedor-boton-referidos-LN span {
+    margin-top: 5px;
+    color: white;
+    max-width: 245px;
+}
+
+@media only screen and (min-width : 1025px) {
+    .pnt-contenedor-boton-referidos-LN {
+        height: 232px;
+    }
+
+    .pnt-contenedor-boton-referidos-LN .btn.pnt-button-nueva-linea {
+        font-size: 2.6rem;
+        height: 65px;
+        padding: 0 32px;
+        line-height: 1px;
+        border-radius: 17px;
+    }
+
+    .pnt-contenedor-boton-referidos-LN span {
+        font-size: 1.5rem;
+        margin-top: 50px;
+        max-width: 405px;
+    }
+
+}
+
+.pnt-contenedor-boton-referidos .btn.pnt-button-nueva-linea:hover, .pnt-contenedor-boton-referidos-LN .btn.pnt-button-nueva-linea:hover {
+    background-color: #ff599c;
+    opacity: 0.7;
+}
+
+.pnt-contenedor-boton-referidos span a, .pnt-contenedor-boton-referidos-LN span a {
+    color: #FF0066;
+}
+
+.pnt-contenedor-boton-referidos span a:hover, .pnt-contenedor-boton-referidos-LN span a:hover {
+    color: #ff599c;
+}
+
+.pnt-footer-landing-referidos-LN {
+    background-color: #7a0031;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    font-size: 0.8rem;
+    color: white;
+    padding: 0 3rem 3rem 3rem;
+    font-family: Catamaran, "Arial";
+}
+
+.pnt-footer-landing-referidos-LN p {
+    text-align: justify;
+}
+
+.pnt-footer-landing-referidos-LN p strong {
+    font-weight: 800;
+}
+
+.pnt-footer-landing-referidos-LN .pnt-referidos-legales {
+    font-size: 0.9em;
+    margin-top: 40px;
+}
+
+.pnt-footer-landing-referidos-LN .pnt-referidos-faq-pregunta,
+.pnt-footer-landing-referidos-LN .pnt-referidos-legales p:nth-child(1) {
+    margin-bottom: 0;
+}
+
+.pnt-footer-landing-referidos-LN .pnt-referidos-faq-respuesta,
+.pnt-footer-landing-referidos-LN .pnt-referidos-legales p:nth-child(2) {
+    margin-top: 0;
+}
+
+@media only screen and (min-width : 1025px) {
+    .pnt-footer-landing-referidos, .pnt-footer-landing-referidos-LN  {
+        padding: 0 4rem 4rem 4rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width : 1040px) {
+    .pnt-contenedor-boton-referidos-LN .pnt-contenedor-botones-redes {
+        width: 50%;
+    }
+}

@@ -1,0 +1,29 @@
+.pnt-titulo-info-referido {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    text-align: left;
+}
+
+.pnt-subtitulo-info-referido {
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+}
+
+.pnt-texto-truncado {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.pnt-contenedor-link-invitacion-referidos .pnt-button img {
+    padding-left: .4rem;
+}
+
+@media (min-width: 576px) {
+    .pnt-card-truncate {
+        width: 75%;
+    }
+    .pnt-button--tamanio-no-mobile {
+        width: 30%;
+    }
+}

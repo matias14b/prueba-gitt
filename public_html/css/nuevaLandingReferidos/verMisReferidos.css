@@ -1,0 +1,87 @@
+.pnt-titulo-ver-referidos {
+    font-size: 1.625rem;
+}
+
+.pnt-card-referido {
+    background-color: var(--tema-tuenti-orange);
+    color: var(--tema-tuenti-pitaya);
+}
+
+.pnt-card-numero-linea {
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+.pnt-card-fecha-creacion {
+    color: var(--tema-tuenti-light-grey-2);
+}
+
+.pnt-icono-estado {
+    font-size: 3.2em;
+}
+
+.pnt-card-referido .card-footer {
+    border-radius: 0 0 10px 10px;
+}
+
+.pnt-portabilidad-en-curso {
+    color: var(--tema-tuenti-blue-2);
+}
+
+.pnt-portabilidad-cancelada {
+    color: var(--tema-tuenti-error);
+}
+
+.pnt-portabilidad-error {
+    color: var(--tema-tuenti-orange-2);
+}
+
+.pnt-portabilidad-cerrada {
+    color: var(--tema-tuenti-green-2);
+}
+
+.pnt-borde {
+    border-top: 2px solid var(--tema-tuenti-pitaya);
+    border-bottom: 2px solid var(--tema-tuenti-pitaya);
+}
+
+.nav-item .pnt-button--tuenti--outlined__tab {
+    border-bottom: 2px solid var(--tema-tuenti-blanco);
+    margin-bottom: -2px;
+}
+.nav-item .pnt-button--tuenti--outlined__tab:hover {
+    border: 2px solid var(--tema-tuenti-pitaya);
+    border-bottom: 2px solid var(--tema-tuenti-blanco);
+    background-color: var(--tema-tuenti-blanco);
+    color: var(--tema-tuenti-pitaya);
+}
+.pnt-contenedor-informacion-referente > ul {
+    z-index: 1;
+}
+
+li a {
+    cursor: pointer;
+}
+
+.pnt-padding-horizontal {
+    padding: 0 .4rem;
+}
+
+@media (min-width: 576px) {
+    .pnt-card {
+        border-radius: 10px;
+    }
+    .pnt-borde {
+        border: 2px solid var(--tema-tuenti-pitaya);
+    }
+    .pnt-card--espaciado {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .pnt-contenedor-selecciona-estado {
+        width: 30%;
+    }
+    .pnt-padding-horizontal {
+        justify-content: end;
+    }
+}

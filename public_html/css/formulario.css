@@ -1,0 +1,330 @@
+/*****Imprtamos las *******/
+@font-face {
+    font-family: TextaThin;
+    src: url(../fonts/Texta-Alt-Thin.otf);
+    font-display: swap; 
+}
+@font-face {
+    font-family: TextaRegular;
+    src: url(../fonts/Texta-Alt-Book.otf);
+    font-display: swap; 
+}
+@font-face {
+    font-family: TuentiBackslanted-Regular;
+    src: url(../fonts/TuentiBackslanted-Regular.otf);
+    font-display: swap; 
+}
+
+/**** Estilos Tema Formulario****/
+
+* {margin: 0; padding: 0;}
+
+.pnt-body{
+    background: linear-gradient(rgba(148, 64, 152,0.9), rgba(160, 10, 200, 0.6)) no-repeat center center fixed;
+}
+
+.pnt-html-formulario-portabilidad{
+    height: 790px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    background-size: 100% 100%;;
+}
+
+.pnt-formulario-envio-info-cliente {
+    padding-top: 5%;
+}
+
+/****Estilo Formulario*****/
+.pnt-formulario-portabilidad-usuario{
+    display: none;
+    width: 500px;
+    margin: 30px auto;
+    text-align: center;
+    position: relative;
+    font-family: TextaRegular;
+}
+
+.pnt-formulario-portabilidad-usuario .pnt-seccion-formulario {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+    position: relative;
+}
+
+.pnt-titulo-seccion-formulario {
+    font-size: 1.4em;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+.pnt-subtitulo-seccion-formulario {
+    font-weight: normal;
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.tuenti-icono-dni{
+    padding-right: 5px;
+}
+
+
+.pnt-formulario-portabilidad-usuario .pnt-seccion-formulario .pnt-solicitud-chip{
+    background-color: #E90A66;
+}
+
+@media screen and (max-width:500px){
+    .pnt-formulario-portabilidad-usuario{
+        width: auto;
+    }
+}
+
+/*****Inputs****/
+.pnt-formulario-portabilidad-usuario input,.pnt-formulario-portabilidad-usuario select {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: TextaRegular;
+    color: #2C3E50;
+    font-size: 1.0em;
+}
+
+.pnt-seccion-formulario .pnt-input-codigo{
+    border-color: #E90A66;
+    border: dotted #E90A66;
+}
+
+.pnt-seccion-formulario .pnt-input-piso{
+    float: left;
+}
+.pnt-seccion-formulario .pnt-input-departamento,.pnt-seccion-formulario .pnt-input-piso{
+    width: 50%;
+}
+
+/*****Buttons*****/
+.pnt-formulario-portabilidad-usuario .action-button {
+    width: 100px;
+    background: #0ADA7C;
+    font-weight: bold;
+    color: white;
+    font-family: TextaRegular;
+    font-size: 16px;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+input[type="file"] {
+    display: none;
+}
+.tuenti-input-file-label{
+    border-radius: 2px;
+    display: block;
+    border: 1px solid #E90A66;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: white;
+    background: #E90A66;
+}
+
+.tuenti-recaptcha{
+    display: table;
+    margin: 0 auto;
+}
+
+.pnt-formulario-portabilidad-usuario .action-button:hover, .pnt-formulario-portabilidad-usuario .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+.pnt-seccion-formulario li.parsley-required{
+    text-align: center;
+}
+
+/*****Barra de Progreso*****/
+
+.pnt-barra-de-progreso-formulario {
+    margin-bottom: 10px;
+    overflow: hidden;
+    counter-reset: step;
+}
+
+.pnt-barra-de-progreso-formulario li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    width: 25%;
+    float: left;
+    position: relative;
+}
+.pnt-barra-de-progreso-formulario li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 20px;
+    line-height: 20px;
+    display: block;
+    font-size: 1.2em;
+    color: #333;
+    background: white;
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+}
+
+/***Barra de Progreso Conectores***/
+.pnt-barra-de-progreso-formulario li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1;
+}
+
+.pnt-barra-de-progreso-formulario li:first-child:after {
+    content: none; 
+}
+
+.pnt-barra-de-progreso-formulario li.active:before,  .pnt-barra-de-progreso-formulario li.active:after{
+    background: #0ADA7C;
+    color: white;
+}
+
+/****Estilos de Parsley****/
+
+.pnt-seccion-formulario.current {
+    display: inherit;
+}
+
+.pnt-seccion-formulario {
+    display: none;
+}
+
+.pnt-seccion-formulario .parsley-errors-list.filled {
+    list-style: none;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #e3006a;
+    font-size: 1.0em;
+}
+
+.pnt-subtitulo-seccion-formulario .mensaje-box {
+    border-style: dashed; 
+    border-color: #E90A66;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pnt-hide {
+    display: none;
+}
+
+/****Spinner*****/
+.spinner {
+    margin: auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #A00ACB;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+
+    -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+    0%, 40%, 100% { 
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% { 
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+}
+
+/*** Estilos Recaptcha***/
+@media screen and (max-height: 575px){ #rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;} } 
+
+/*** Estilos Banner ***/
+.pnt-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+
+}
+@media only screen and (min-width: 769px){
+    .pnt-banner {
+        content: url("../imagen/banner-portabilidad-desktop.jpg");
+    }
+}
+
+/*** Estilo placeholder***/
+@media only screen and (max-width: 420px){
+    .pnt-js-input-formulario::-webkit-input-placeholder{
+        font-size: 2.8vw;
+    }
+}
+
+/*** Firma digital***/
+.pnt-firma-digital .parsley-errors-list .parsley-required{
+    text-align: center;
+}
+
+#pad-firma{
+    border: 1px solid;
+    border-color: teal;
+    border-radius: 3px;
+}
+
+.pnt-seccion-formulario .signature-pad-actions .tuenti-limpiar-firma{
+    background:#E90A66;
+    font-size:15px;
+}

@@ -1,0 +1,416 @@
+@import url("fonts.css");
+
+body {
+  background: #1d1d1d;
+}
+
+.header {
+  background-color: #ff0066;
+  color: #fff;
+}
+
+.header .logo {
+  width: 8rem;
+  margin-left: 2%;
+}
+
+.pnt-logo {
+  width: 8rem;
+  margin: 0.5rem 0 0.5rem 0.5rem;
+}
+
+.pnt-h1-seo {
+  font-size: 1.3rem;
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 550;
+}
+
+.promo {
+  background-color: #330241;
+}
+
+.promo__container {
+  margin-top: 5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: 5rem;
+  line-height: 1;
+  -webkit-transform: translateY(-1rem);
+  transform: translateY(-1rem);
+}
+
+@media screen and (max-width: 400px) {
+  .promo__container {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .promo__container {
+    font-size: 9rem;
+    min-width: 80%;
+    -webkit-transform: translateY(-3.5rem);
+    transform: translateY(-3.5rem);
+  }
+
+  .promo__container::before,
+  .promo__container::after {
+    content: "";
+    background: url("../../img/portabilidadLandingReferidos/estrellas.png") no-repeat center center;
+    background-size: contain;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.promo__container__price-1 {
+  color: #ffce00;
+}
+
+.promo__container__price-1 b {
+  position: relative;
+}
+
+.promo__container__price-1 b span {
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 992px) {
+  .promo__container__price-1 b span {
+    font-size: 1.5rem;
+  }
+}
+
+.promo__container__price-1::before,
+.promo__container__price-1::after {
+  content: "";
+  background: url("../../img/portabilidadLandingReferidos/estrellas.png") no-repeat center center;
+  background-size: contain;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+@media only screen and (max-width: 425px) {
+
+  .promo__container__price-1::before,
+  .promo__container__price-1::after {
+    width: 65px;
+  }
+}
+
+
+
+@media screen and (min-width: 992px) {
+
+  .promo__container__price-1::before,
+  .promo__container__price-1::after {
+    display: none;
+  }
+}
+
+.promo__container__plus-sign,
+.promo__container__price-2 {
+  color: #330241;
+  -webkit-text-stroke: #ffce00 2px;
+}
+
+.promo__container__price-2::before,
+.promo__container__price-2::after {
+  content: "";
+  background: url("../../img/portabilidadLandingReferidos/estrellas.png") no-repeat center center;
+  background-size: contain;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+@media screen and (min-width: 992px) {
+
+  .promo__container__price-2::before,
+  .promo__container__price-2::after {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .info .pnt-informacion-promo {
+    display: flex;
+    flex-direction: column;
+    padding-top: .4rem;
+  }
+}
+
+.info {
+  background-color: #000;
+  font-family: "Texta", sans-serif;
+  font-weight: 900;
+  text-align: center;
+  position: relative;
+}
+
+.info::before {
+  background: url(../../img/portabilidadLandingReferidos/Degrade_pitaya_up.png) repeat center center transparent;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 15px;
+  position: absolute;
+  left: 0;
+  top: -15px;
+  z-index: 1;
+}
+
+.info::after {
+  background: url(../../img/portabilidadLandingReferidos/Degrade_pitaya_down.png) repeat center center transparent;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 15px;
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  z-index: 1;
+}
+
+.info span {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 992px) {
+  .info span {
+    font-size: 1.75rem;
+  }
+}
+
+.info b {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  color: #ff0066;
+  font-size: 2rem;
+}
+
+.info .pnt-oferta {
+  color: #ffce00;
+}
+
+@media screen and (min-width: 992px) {
+  .info b {
+    font-size: 3rem;
+  }
+}
+
+.como-funciona {
+  background: url(../../img/portabilidadLandingReferidos/Degrade_lila.jpg) repeat-x bottom center #330241;
+  font-family: "Catamaran", sans-serif;
+  font-weight: 400;
+  color: #fff;
+}
+
+.como-funciona__body h2 {
+  font-weight: 300;
+  font-size: 2.75rem;
+}
+
+@media screen and (min-width: 992px) {
+  .como-funciona__body {
+    max-width: -webkit-max-content;
+    max-width: -moz-max-content;
+    max-width: max-content;
+    border: 1rem transparent solid;
+    border-image-slice: 130;
+    border-image-width: 5.625rem;
+    border-image-outset: 0px 0px 6rem 0px;
+    border-image-repeat: stretch stretch;
+    border-image-source: url("../../img/portabilidadLandingReferidos/square-border-glow-background.png");
+  }
+}
+
+.como-funciona__body article {
+  width: 90%;
+  margin: 0 10px;
+  border-bottom: 1px solid #ffce00;
+}
+
+@media screen and (min-width: 992px) {
+  .como-funciona__body article {
+    width: auto;
+    border-bottom: none;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .como-funciona__body article .number {
+    height: 5.8rem;
+  }
+}
+
+.como-funciona__body article p {
+  font-weight: 300;
+  font-size: 2.2rem;
+}
+
+@media screen and (min-width: 992px) {
+  .como-funciona__body article p {
+    border-bottom: 2px solid #ffce00;
+  }
+}
+
+.como-funciona__body article p .whatsapp {
+  width: 2rem;
+}
+
+.como-funciona__body .description {
+  width: 80%;
+  font-size: 1.75rem;
+}
+
+@media screen and (min-width: 992px) {
+  .como-funciona__body .description {
+    font-size: 1.875rem;
+  }
+}
+
+.como-funciona__body b {
+  font-weight: 700;
+}
+
+.como-funciona .btn-pink {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  background-color: #ff0066;
+  border: 5px #00e7ff solid;
+  border-radius: 1rem;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+@media screen and (min-width: 992px) {
+  .como-funciona .btn-pink:hover {
+    border: 5px #ffce00 solid;
+  }
+}
+
+.como-funciona .pnt-invita-ahora-alternativo {
+  margin-top: 25px;
+  font-weight: 600;
+}
+
+.como-funciona p.pnt-invita-ahora-alternativo a.pnt-invita-ahora-alternativo-link {
+  color: #ff0066;
+}
+
+@media only screen and (max-width: 425px) {
+  .pnt-img-rayo {
+    display: none;
+  }
+}
+
+.faqs {
+  background-color: #330241;
+  color: #fff;
+}
+
+.faqs__container {
+  max-width: 992px;
+}
+
+.faqs__list {
+  font-family: "Catamaran", sans-serif;
+  border: 2px #fff solid;
+}
+
+.faqs__list .question {
+  font-weight: 900;
+}
+
+.faqs__list .answer {
+  font-weight: 400;
+}
+
+.faqs__list .answer a {
+  color: #ff0066;
+}
+
+.pnt-faqs-link {
+  word-wrap: break-word;
+}
+
+@media screen and (min-width: 992px) {
+  .faqs__list {
+    border: none;
+  }
+}
+
+.faqs__title__container h3 {
+  font-family: "Catamaran", sans-serif;
+  font-size: 2.75rem;
+}
+
+.faqs__list__container-left,
+.faqs__list__container-right {
+  border: none;
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+}
+
+@media screen and (min-width: 992px) {
+
+  .faqs__list__container-left,
+  .faqs__list__container-right {
+    height: 34rem;
+    border: 2px #fff solid;
+  }
+}
+
+.letra-chica {
+  background-color: #330241;
+  color: #fff;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.letra-chica__body {
+  padding: 2rem 2rem;
+  max-width: 992px;
+}
+
+@media screen and (min-width: 992px) {
+  .letra-chica__body {
+    padding: 10rem 4rem 1rem 4rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .letra-chica__body img {
+    right: 25px;
+  }
+}
+
+.letra-chica__body h4 {
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=main.css.map */
+
+/**
+TOAST
+**/
+div div.toast-container div#toastMensajeExito {
+  background-color: #13bb67 !important;
+}
+
+.pnt-claro-color {
+  color: #EF3829;
+}

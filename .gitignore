@@ -58,3 +58,10 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+public_html/node_modules
+node_modules/
+public_html/package-lock.json
+public_html/js/app/service/utils.js
+.idea/*
+public_html/nbproject/
+public_html/imagen/*

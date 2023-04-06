@@ -1,0 +1,20 @@
+.pnt-subtitulo {
+    color: var(--tema-tuenti-dark-grey);
+}
+
+.pnt-contenedor-pasate-a-tuenti .pnt-button {
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    .pnt-contenedor-pasate-a-tuenti {
+        width: 65%;
+        text-align: center;
+    }
+    .pnt-contenedor-pasate-a-tuenti .pnt-button {
+        width: 75%;
+    }
+    .pnt-contenedor-pasate-a-tuenti .pnt-descripcion {
+        padding: 1.6rem 0 1.6rem 0;
+    }
+}

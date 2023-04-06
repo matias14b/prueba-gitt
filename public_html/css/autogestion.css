@@ -1,0 +1,886 @@
+:root {
+    --tema-tuenti-pitaya: #E5005C;
+    --tema-tuenti-dark-gray: #747D86;
+    --tema-tuenti-berenjena: #3A2F7F;
+    --tema-tuenti-orange: #FFEACA;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--tema-tuenti-pitaya);
+    border-radius: 4px;
+}
+
+.pnt-resaltado-tuenti {
+    color: var(--tema-tuenti-pitaya);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/*****************
+NAV BAR CON ICONOS
+******************/
+
+.pnt-navbar-con-iconos {
+    background-color: var(--tema-tuenti-pitaya);
+    z-index: 1002;
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%);
+    -webkit-box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%);
+}
+
+.pnt-navbar-con-iconos ul.tabs {
+    height: 100px;
+}
+
+.pnt-navbar-con-iconos ul.tabs li.tab {
+    height: 100px;
+}
+
+.pnt-navbar-con-iconos ul.tabs li.tab a:focus {
+    background-color: var(--tema-tuenti-pitaya);
+}
+
+.pnt-navbar-con-iconos ul.tabs li.tab i {
+    font-size: 35px;
+}
+
+.pnt-navbar-con-iconos ul.tabs li.tab span {
+    font-size: 1.2rem;
+}
+
+.pnt-navbar-con-iconos-ul li:last-child.indicator {
+    background-color: #ffffff;
+    height: 4px;
+    border-radius: 2px 2px 2px 2px;
+}
+
+.pnt-navbar-con-iconos-ul i {
+    margin-top: 10px;
+}
+
+.pnt-navbar-con-iconos-ul .pnt-icono {
+    height: 45px;
+}
+
+.pnt-body-autogestion {
+    overflow-x: hidden;
+}
+
+.pnt-tab-container {
+    padding-top: 0;
+}
+
+.pnt-titulo {
+    font-size: 3.2rem;
+    color: var(--tema-tuenti-pitaya);
+}
+
+.pnt-subtitulo {
+    font-size: 2.4rem;
+    color: var(--tema-tuenti-dark-gray);
+}
+
+.pnt-titulo,
+.pnt-subtitulo {
+    padding: 0 1.6rem;
+    text-align: center;
+}
+
+.pnt-body-autogestion .pnt-contenedor-boton-instalacion .pnt-boton-flotante {
+    position: fixed;
+    z-index: 1000;
+    top: 120px;
+    right: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    color: #FFFFFF;
+    background-color: var(--tema-tuenti-pitaya);
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.30);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pnt-body-autogestion .pnt-contenedor-boton-instalacion .pnt-boton-flotante i {
+    font-size: 1.9rem;
+}
+
+.pnt-body-autogestion .pnt-contenedor-boton-instalacion .pnt-mensaje-boton-flotante {
+    position: fixed;
+    z-index: 1000;
+    top: 120px;
+    right: 90px;
+    width: 255px;
+    height: 90px;
+    padding: 8px;
+    border-radius: 10px;
+    color: #FFFFFF;
+    background-color: var(--tema-tuenti-pitaya);
+    font-size: 1.1rem;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.30);
+}
+
+.pnt-body-autogestion .pnt-contenedor-boton-instalacion .pnt-flecha-mensaje-boton-flotante {
+    color: var(--tema-tuenti-pitaya);
+    font-size: 1.8rem;
+    position: fixed;
+    z-index: 1000;
+    right: 92px;
+    top: 128px;
+    width: 0;
+    height: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.30);
+}
+
+.pnt-jquery-faded-out {
+    display: none;
+    opacity: 0;
+}
+
+.pnt-semi-transparente {
+    opacity: 0.6
+}
+
+.pnt-semi-transparente:hover {
+    opacity: 1
+}
+
+.pnt-div-contenedor-barra-progreso {
+    position: absolute;
+    background-color: var(--tema-tuenti-pitaya);
+    height: 3px;
+    width: 93%;
+    bottom: 0;
+    border-radius: 8px;
+}
+
+.pnt-div-barra-progreso {
+    height: 100%;
+    width: 0%;
+    background-color: white;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+}
+
+.pnt-boton-cerrar-mensaje-boton-flotante {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    font-weight: 800;
+    cursor: pointer;
+    color: var(--tema-tuenti-pitaya);
+    background-color: white;
+    border-radius: 50%;
+    border: 3px solid var(--tema-tuenti-pitaya);
+    text-align: center;
+    line-height: 17px;
+}
+
+.pnt-body-autogestion.pnt-body-forzar-portrait-desde-landscape-lado-izq {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.pnt-body-autogestion.pnt-body-forzar-portrait-desde-landscape-lado-der {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.pnt-body-autogestion.pnt-body-forzar-portrait-desde-portrait-secondary {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+
+@media only screen and (max-width : 992px) {
+    .pnt-tab-container-mobile-sin-tabs {
+        padding-top: 0;
+    }
+}
+
+.pnt-video {
+    margin-top: 10px;
+    width: 100%;
+    height: calc(width * 1.33);
+    border: 5px solid var(--tema-tuenti-pitaya);
+    border-radius: 30px;
+}
+
+.pnt-contenedor-video {
+    position: relative;
+}
+
+.pnt-video-borde-codigo {
+    position: absolute;
+    border: 1px solid var(--tema-tuenti-pitaya);
+    height: 10%;
+    width: 75%;
+    bottom: 150px;
+    left: 13%;
+    box-shadow: 0px 0px 0.5px 0.5px var(--tema-tuenti-pitaya);
+}
+
+.pnt-video-texto {
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-size: 0.8rem;
+    top: 8%;
+    left: 11%;
+    text-shadow: 1px 1px black;
+}
+
+.pnt-input-numero-chip-bold {
+    font-weight: bold;
+}
+
+@media (orientation: landscape) {
+    .pnt-video {
+        width: 60%;
+        height: calc(width * 0.66);
+    }
+
+    .pnt-video-texto {
+        font-size: 0.8rem;
+        top: 13%;
+        left: 28%;
+    }
+
+    .pnt-video-borde-codigo {
+        height: 14%;
+        width: 43%;
+        bottom: 42%;
+        left: 28.5%;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    .pnt-card-con-borde-de-color.pnt-card-solicitud-info .row .col.m4 {
+        width: 100%;
+    }
+}
+
+.pnt-aviso-chip-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem 1.6rem;
+}
+
+@media only screen and (min-width: 576px) {
+    .pnt-aviso-chip-contenedor {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .pnt-aviso-chip-contenedor .pnt-resaltado-tuenti, 
+    .pnt-aviso-chip-contenedor .pnt-formato-texto-tene-en-cuenta {
+        text-align: left;
+    }
+}
+
+.pnt-aviso-chip-contenedor .material-icons.pnt-icono-tene-en-cuenta {
+    font-size: 7.2rem;
+}
+
+
+/****
+FIRMA
+*****/
+
+.btn.pnt-boton-dni {
+    width: 250px;
+}
+
+.pnt-card.pnt-card-con-borde-de-color input[type=file]+ul.parsley-errors-list {
+    margin-top: 0px;
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+.pnt-mensaje-error-validacion-firma {
+    font-size: 1.05rem;
+}
+
+.pnt-pad-firma {
+    border: double 3px transparent;
+    border-radius: +px;
+    background-image: linear-gradient(white, white),
+        radial-gradient(circle at top left, #baf2f0, var(--tema-tuenti-pitaya));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.pnt-header-logo-tuenti {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    background-color: var(--tema-tuenti-pitaya);
+}
+
+.pnt-boton-volver-arriba {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--tema-tuenti-pitaya);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.pnt-boton-volver-arriba i {
+    font-size: 3rem;
+}
+
+.pnt-boton-volver-arriba:hover {
+    background-color: var(--tema-tuenti-pitaya);
+}
+
+.pnt-flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.pnt-card-titulo {
+    background-color: #3A2F7F;
+    border-radius: .375rem .625rem 0 0;
+    padding: 0 1.6rem;
+}
+
+.pnt-card-icono-titulo {
+    font-size: 2.6rem;
+    color: #FFFFFF;
+    padding: 1rem;
+}
+
+.pnt-formato-texto {
+    font-size: 1.5rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.pnt-formato-texto-interlinking {
+    white-space: normal;
+}
+
+.pnt-texto-titulo {
+    padding: 1rem 0;
+    font-size: 1.6rem;
+    color: white
+}
+
+.pnt-div-contenedor-card {
+    width: 90%;
+    margin-top: 2.4rem;
+    flex-direction: column;
+}
+
+.pnt-container-interlinking {
+    padding: 1rem;
+    width: 90%;
+}
+
+.pnt-titulo-interlinking {
+    margin: 0;
+    text-align: center;
+}
+
+.pnt-boton-interlinking {
+    background-color: #fff;
+    width: 100%;
+    border-radius: .625rem;
+    font-weight: 600;
+}
+
+.pnt-div-contenedor-interlinking {
+    margin-bottom: 0;
+}
+
+@media(min-width: 576px) {
+    .pnt-boton-interlinking {
+        width: 33%;
+    }
+
+
+}
+
+.row>.pnt-boton-formato {
+    padding: .625rem 1.5rem;
+    white-space: nowrap;
+}
+
+.pnt-button-pasate-tuenti--tuenti--outlined {
+    color: var(--tema-tuenti-pitaya);
+    border: .125rem solid var(--tema-tuenti-pitaya);
+}
+
+.pnt-button-pasate-tuenti--tuenti--outlined:hover,
+.pnt-button-pasate-tuenti--tuenti--outlined:focus {
+    color: #FFFFFF;
+    background-color: var(--tema-tuenti-pitaya);
+}
+
+.pnt-button-suma-mas-tuentis--tuenti--outlined {
+    color: var(--tema-tuenti-berenjena);
+    border: .125rem solid var(--tema-tuenti-berenjena);
+}
+
+.pnt-button-suma-mas-tuentis--tuenti--outlined:hover,
+.pnt-button-suma-mas-tuentis--tuenti--outlined:focus {
+    color: #FFFFFF;
+    background-color: var(--tema-tuenti-berenjena);
+}
+
+.collapsible li.active i {
+    transform: rotate(180deg);
+}
+
+.collapsible li.active>div {
+    border-radius: 0;
+}
+
+.collapsible li i {
+    transition: .1s all linear;
+}
+
+.pnt-formato-preguntas-frecuentes-titulo {
+    margin: 0;
+}
+
+.pnt-preguntas-frecuentes-elemento {
+    width: 100%;
+}
+
+.pnt-flex-pegable {
+    margin: 0;
+    flex-direction: column;
+    border: 0;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+    border-radius: 0.625rem 0.625rem 0.625rem 0.625rem;
+}
+
+.pnt-formato-pregunta {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: .5rem;
+    color: black;
+}
+
+.pnt-plegable-pregunta {
+    justify-content: space-between;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.pnt-plegable-respuesta {
+    padding: 0;
+}
+
+li:last-child .pnt-formato-respuesta {
+    border-radius: 0 0 .625rem .625rem;
+}
+
+li:last-child .pnt-plegable-pregunta {
+    border-radius: 0 0 .625rem .625rem;
+    border: 0
+}
+
+.collapsible li.active>.collapsible-header {
+    border-bottom: .063rem solid #ddd;
+}
+
+div:last-child .pnt-plegable-respuesta {
+    border-bottom: 0;
+}
+
+.pnt-formato-respuesta {
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+    background-color: var(--tema-tuenti-orange);
+}
+
+div>.pnt-formato-icono-pregunta {
+    display: flex;
+    color: var(--tema-tuenti-pitaya);
+    justify-content: center;
+    align-items: center;
+    font-size: 2.4rem;
+    margin-right: .4rem;
+}
+
+.pnt-orden-iconos {
+    flex-direction: row-reverse;
+}
+
+.pnt-tene-en-cuenta-contenedor-lista {
+    display: flex;
+    padding: 0 1.563rem;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pnt-tene-en-cuenta-lista {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 0;
+}
+
+.pnt-borde-inferior-pitaya {
+    border-bottom: .2rem dashed var(--tema-tuenti-pitaya);
+}
+
+li:nth-child(3) .pnt-tene-en-cuenta-row {
+    border-right: 0px;
+}
+
+.pnt-tene-en-cuenta-contenedor-row {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    padding: .8rem 1rem;
+}
+
+.pnt-tene-en-cuenta-elemento {
+    padding: 0 .1rem
+}
+
+.pnt-tene-en-cuenta-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border-right: .2rem dashed var(--tema-tuenti-pitaya);
+}
+
+.pnt-tene-en-cuenta-contenedor-lista .pnt-icono-tene-en-cuenta {
+    font-size: 4.68rem;
+    color: var(--tema-tuenti-pitaya);
+    padding: .4rem;
+}
+
+.pnt-tene-en-cuenta-lista .pnt-formato-texto-tene-en-cuenta {
+    padding: .4rem 1rem;
+}
+
+.pnt-formato-texto-tene-en-cuenta {
+    color: var(--tema-tuenti-dark-gray);
+    font-weight: 600;
+    text-align: center;
+}
+
+@media only screen and (max-width : 992px) {
+    .pnt-container-firma {
+        margin: 0 auto;
+        max-width: 1280px;
+        width: 90%;
+    }
+
+    .pnt-boton-volver-arriba {
+        bottom: 8px;
+        right: 8px;
+    }
+
+    .pnt-card-tene-en-cuenta-preguntas-frecuentes {
+        padding: 0 .75rem;
+    }
+
+    .pnt-formato-texto {
+        white-space: normal;
+    }
+
+    .pnt-card-icono-titulo {
+        font-size: 2rem;
+    }
+
+    .pnt-texto-titulo {
+        font-size: 1.2rem;
+    }
+
+    .pnt-container-interlinking {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .pnt-button {
+        padding: 0 .75rem;
+    }
+
+    .pnt-div-contenedor-interlinking {
+        margin: 0 .063rem;
+        flex-direction: column;
+        padding-bottom: .625rem;
+        justify-content: center;
+    }
+
+    .pnt-tene-en-cuenta-row {
+        border-right: 0;
+    }
+
+    .pnt-tene-en-cuenta-lista {
+        display: flex;
+        flex-direction: column;
+        margin-top: .313rem;
+        padding: 0;
+    }
+
+    .pnt-formato-texto-tene-en-cuenta {
+        padding: .87rem;
+    }
+
+    .pnt-tene-en-cuenta-contenedor-row {
+        padding: 0;
+    }
+
+    .pnt-tene-en-cuenta-elemento {
+        border-bottom: dashed var(--tema-tuenti-pitaya);
+        padding: 1.5rem 0;
+    }
+
+    .pnt-orden-iconos {
+        flex-direction: row;
+    }
+
+    .pnt-borde-inferior-pitaya {
+        border-bottom: 0;
+    }
+
+    .pnt-formato-texto-li {
+        color: black;
+        font-weight: 400;
+    }
+
+    .pnt-formato-pregunta {
+        font-size: 1.2rem;
+    }
+
+    .pnt-formato-respuesta {
+        padding: 1rem 1rem 1rem 2rem;
+        font-size: 1.2rem;
+    }
+
+    .pnt-plegable-pregunta {
+        padding: 1rem .2rem 1rem 1rem;
+    }
+}
+
+.btn.pnt-button-volver-a-firmar {
+    background-color: #fff;
+    color: var(--tema-tuenti-pitaya);
+    font-size: 1rem;
+    border-radius: 10px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    right: 0px;
+    bottom: 0px;
+    box-shadow: 0px 0px 1px 0px #19191994;
+    display: inline-flex;
+    vertical-align: top;
+    padding-right: 20px;
+}
+
+.btn.pnt-button-volver-a-firmar:hover {
+    opacity: 0.7;
+}
+
+.pnt-firma-digital {
+    margin-top: 20px;
+}
+
+.pnt-descripcion-firma {
+    margin-top: 20px;
+}
+
+/****
+INGRESO NUMERO CHIP
+*****/
+
+.pnt-button-escaneo-codigo {
+    margin-bottom: 15px;
+    margin-top: 10px;
+    width: 90%;
+}
+
+.pnt-button-nueva-linea.pnt-button-flat {
+    background-color: white;
+    color: var(--tema-tuenti-pitaya);
+    box-shadow: none;
+    border: 1px solid var(--tema-tuenti-pitaya);
+}
+
+.pnt-button-nueva-linea.pnt-button-flat:hover {
+    background-color: var(--tema-tuenti-pitaya);
+    color: white;
+    box-shadow: none;
+}
+
+@media only screen and (max-width: 500px) {
+    .pnt-button-nueva-linea.pnt-button-escaneo-codigo {
+        font-size: 0.7rem;
+    }
+}
+
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-current-time-display,
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-timeline {
+    display: none;
+}
+
+/****
+CARDS
+*****/
+
+.pnt-card.pnt-card-notificacion .pnt-mensaje-informacion-tramite-adicional {
+    margin-top: 20px;
+}
+
+#pnt-tab-envio .pnt-card-notificacion {
+    margin-top: 8%;
+}
+
+.pnt-input-numero-chip {
+    padding-top: 30px;
+}
+
+.pnt-imagen-card-pedido-info {
+    width: 204px;
+    height: 126px;
+}
+
+.pnt-autogestion-boton-enviar-chip {
+    cursor: pointer;
+}
+
+/***********
+PROGRESS BAR
+************/
+
+/*NORMAL*/
+
+.pnt-progressbar.pnt-progressbar-tramite li:after {
+    visibility: hidden;
+}
+
+/*ACTUAL*/
+
+.pnt-progressbar li.pnt-icon-pendiente:before {
+    font-family: "Material Icons";
+    content: "\e192";
+}
+
+.pnt-progressbar li.pnt-icon-cancelado:before {
+    font-family: "Material Icons";
+    content: "\e14c";
+}
+
+.pnt-progressbar li.pnt-icon-error:before {
+    font-family: "Material Icons";
+    content: "\e645";
+}
+
+.pnt-progressbar li.pnt-icon-preparando:before {
+    font-family: "Material Icons";
+    content: "\e869";
+}
+
+.pnt-progressbar li.pnt-icon-viajando:before {
+    font-family: "Material Icons";
+    content: "\e558";
+}
+
+.pnt-progressbar li.pnt-icon-entregado:before {
+    font-family: "Material Icons";
+    content: "\e8dc";
+}
+
+.pnt-progressbar li.pnt-icon-datos-sensibles:before {
+    font-family: "Material Icons";
+    content: "security";
+}
+
+.pnt-progressbar li.pnt-icon-dni:before {
+    font-family: "Material Icons";
+    content: "portrait";
+}
+
+.pnt-progressbar li.pnt-icon-chip:before {
+    font-family: "Material Icons";
+    content: "sim_card";
+}
+
+.pnt-progressbar li.pnt-icon-pin:before {
+    font-family: "Material Icons";
+    content: "fiber_pin";
+}
+
+.pnt-progressbar.pnt-progressbar-envio li {
+    width: 25%;
+}
+
+.pnt-progressbar.pnt-progressbar-tramite {
+    display: flow-root;
+    margin-top: 25px;
+}
+
+.pnt-progressbar.pnt-progressbar-tramite li {
+    width: 33%;
+}
+
+.pnt-progressbar.pnt-progressbar-tramite.pnt-progressbar-tramite-movistar li {
+    width: 50%;
+}
+
+@media only screen and (max-width : 992px) {
+    .pnt-card-progressbar-tramite {
+        min-height: 160px;
+    }
+}
+
+/******
+CAPTCHA
+*******/
+
+@media only screen and (max-width : 992px) {
+    form .pnt-card .card-content .row .tuenti-recaptcha {
+        margin-top: 10px;
+        padding-left: calc((100% - 210px) / 2);
+    }
+}
+
+@media only screen and (min-width : 993px) {
+    form .pnt-card .card-content .row .tuenti-recaptcha {
+        margin-top: 10px;
+        padding-left: calc((100% - 304px) / 2);
+    }
+}
+
+/**********
+ANIMACIONES
+**********/
+
+body.pnt-body-autogestion .animated {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+}
+

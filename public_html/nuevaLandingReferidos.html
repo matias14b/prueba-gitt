@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <script src="vendor/vue-recaptcha/vue-recaptcha.min.js" type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mis Referidos Tuenti">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" media="none"
+        onload="if (media != 'all') media = 'all'">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="vendor/font-awesome/css/fontawesome-all.min.css" type="text/css" />
+    <link rel="stylesheet" href="vendor/animate/css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="vendor/data-table/datatables.min.css">
+    <link rel="stylesheet" href="css/nuevaLandingReferidos/pasateATuenti.css" type="text/css">
+    <link rel="stylesheet" href="css/nuevaLandingReferidos/generadorLinkReferidos.css" type="text/css" />
+    <link rel="stylesheet" href="css/nuevaLandingReferidos/bannerPromocionReferidos.css" type="text/css" />
+    <link rel="stylesheet" href="css/nuevaLandingReferidos/nuevaLandingReferidos.css" type="text/css">
+    <link rel="stylesheet" href="css/nuevaLandingReferidos/linkInvitacionReferidos.css" type="text/css">
+    <link rel="stylesheet" href="css/nuevaLandingReferidos/verMisReferidos.css" type="text/css">
+    <link rel="shortcut icon" href="icon/favicon.ico" />
+    <script defer src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit"></script>
+
+    <title>Mis Referidos Tuenti</title>
+</head>
+
+<body>
+    <div>
+        <div id="pnt-app">
+            <nueva-landing-referidos></nueva-landing-referidos>
+        </div>
+    </div>
+
+    <template id="pnt-js-contenedor-nueva-landing-referidos">
+        <div class="row g-0">
+            <div class="col pnt-texto--fuente-tuenti">
+                <banner-promocion-referidos></banner-promocion-referidos>
+                <div class="pnt-contenedor-generador-link pnt-superpuesto">
+                    <generador-link-referidos @mostrar-boton-copiar-link="mostrarBotonCopiarLink"
+                        @pasar-numero-linea="pasarNumeroLineaAVerMisReferidos">
+                    </generador-link-referidos>
+                </div>
+                <div class="pnt-contenedor-link-invitacion-pasate-a-tuenti">
+                    <pasate-a-tuenti :es-visible="!esVisibleInformacionReferente"></pasate-a-tuenti>
+                    <div v-show="esVisibleInformacionReferente"
+                        class="row g-0 pt-2 pnt-contenedor-informacion-referente">
+                        <ul class="nav nav-tabs justify-content-center w-100">
+                            <li class="nav-item">
+                                <a class="nav-link pnt-enfasis pnt-sin-borde-superior-derecho"
+                                    :class="esVisiblePestaniaLink ? 'pnt-button--tuenti--outlined pnt-button--tuenti--outlined__tab' : 'pnt-button--tuenti'"
+                                    @click="mostrarPestaniaLink(true)" aria-current="page">Invitaci&oacute;n</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pnt-enfasis pnt-sin-borde-superior-izquierdo"
+                                    :class="esVisiblePestaniaMisReferidos ? 'pnt-button--tuenti--outlined pnt-button--tuenti--outlined__tab' : 'pnt-button--tuenti'"
+                                    @click="mostrarPestaniaReferidos(false)">Mis referidos</a>
+                            </li>
+                        </ul>
+                        <link-invitacion-referidos :numero-linea="numeroLineaReferente" v-show=esVisiblePestaniaLink>
+                        </link-invitacion-referidos>
+                        <ver-mis-referidos :numero-linea="numeroLineaReferente" v-show=esVisiblePestaniaMisReferidos>
+                        </ver-mis-referidos>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="pnt-template-portabilidad-spinner-de-input">
+        <div>
+            <div class="spinner-border spinner-border-sm ms-1 mt-2 pnt-spinner-pitaya" role="status">
+            </div>
+            <span class="pnt-descripcion">Verificando...</span>
+        </div>
+    </template>
+
+    <template id="pnt-js-generador-link-referidos">
+        <div class="shadow-lg pnt-generador-link-referidos">
+            <div class="card-body pnt-card--color-fondo pnt-card--borde">
+                <div class="row">
+                    <h2 class="col text-center pnt-titulo">
+                        Mandale a tus amig@s a un link personalizado para pasarse a Tuenti
+                    </h2>
+                </div>
+                <div class="row pnt-esta-oculto">
+                    <div class="col py-2 pnt-descripcion pnt-enfasis">
+                        Ingres&aacute; tu n&uacute;mero Tuenti para crear autom&aacute;ticamente un link para invitar a
+                        tus amig@s.
+                        Si ya mandaste links anteriormente, pod&eacute;s mandar el mismo a tus nuevos referidos y
+                        revisar si
+                        tus amig@s ya se pasaron
+                    </div>
+                </div>
+                <label for="numero-linea" class="form-label pt-3 pnt-descripcion pnt-enfasis">Ingres&aacute; tu
+                    n&uacute;mero
+                    tuenti</label>
+                <div class="row align-items-center justify-content-center pnt-input-group">
+                    <div class="col-sm-6 mb-2 pnt-input-group__input">
+                        <input v-model="numeroLinea" v-validate="'numeric|length:10|linea_valida'"
+                            @input="mostrarMensaje" class="form-control pnt-input" id="numero-linea" name="numeroLinea"
+                            type="tel" maxlength="10" placeholder="Ejemplo: 1131163048">
+                        <vue-recaptcha ref="invisibleRecaptcha" @verify="onCaptchaVerificado"
+                            sitekey="6LceQc4UAAAAAD-rH5p6h1Nk4TvbkqKNpIWEvekz" @expired="onCatpchaExpirado"
+                            size="invisible">
+                        </vue-recaptcha>
+                    </div>
+                    <div class="col-sm-6 mb-2 pnt-input-group__button">
+                        <button class="btn w-100 pnt-button pnt-enfasis" :disabled="!esValido"
+                            :class="esValido ? 'pnt-button--tuenti' : 'pnt-esta-deshabilitado'" @click="generarLink">
+                            Generar link o revisar mis referidos </button>
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <portabilidad-input-spinner v-show="esVisibleSpinner"></portabilidad-input-spinner>
+                    <span v-show="esValido" class="pnt-success-input">El n&uacute;mero es correcto ;)</span>
+                    <span v-show="noEsTuenti" class="pnt-warning-input">El n&uacute;mero no pertenece a tuenti :(</span>
+                    <span class="pnt-error-input">{{errors.first("numeroLinea")}}</span>
+                </div>
+                <div class="py-2 px-4 pnt-cheap-promocion pnt-enfasis pnt-texto text-center">
+                    Ten&eacute; en cuenta que vas a recibir los $1.000 y los 5GB cuando tu amig@ sea Tuenti ;)
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="pnt-js-pasate-a-tuenti">
+        <div v-show="esVisible" class="row pt-4 g-0 pnt-contenedor-pasate-a-tuenti">
+            <div class="col px-4">
+                <div class="row g-0">
+                    <div class="col-sm-8 text-center">
+                        <h2 class="pnt-subtitulo pnt-enfasis">Si todav&iacute;a no sos Tuenti, pasate ac&aacute;.
+                        </h2>
+                    </div>
+                    <div class="col-sm-4 px-4">
+                        <a class="btn py-2 pnt-enfasis pnt-button pnt-button--tuenti--outlined"
+                            href="https://portabilidad.tuenti.com.ar" role="button">Pasarme a Tuenti</a>
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col">
+                        <p class="text-center pnt-descripcion pnt-esta-oculto">Para invitar a tus amigos a ser Tuenti y
+                            que ambos ganen 5 Gigas, ten&eacute;s que
+                            tener un número
+                            Tuenti.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="pnt-js-link-invitacion-referidos">
+        <div v-show="esVisible"
+            class="card shadow p-4 mb-3 pnt-contenedor-link-invitacion-referidos pnt-card pnt-card-truncate pnt-borde animate__animated animate__fadeIn">
+            <div class="row pt-4 g-0">
+                <div class="col text-center">
+                    <h2 class="pnt-titulo-info-referido pnt-descripcion pnt-enfasis">Copi&aacute; tu link abajo y
+                        mandalo a
+                        todos tus
+                        amigos para que se
+                        pasen
+                        a Tuenti</h2>
+                </div>
+            </div>
+            <div class="row g-0 py-3">
+                <div class="col">
+                    <p class="pnt-descripcion pnt-subtitulo-info-referido">Recuerda que para recibir los 5 gigas, tu
+                        referido debe pasarse a Tuenti con su mismo número
+                        exitosamente.</p>
+                </div>
+            </div>
+            <div class="row g-0 py-2 justify-content-sm-end">
+                <button @click="compartirPorWhatsApp"
+                    class="btn text-uppercase pnt-button pnt-enfasis pnt-button--tuenti pnt-button--tamanio-no-mobile">
+                    Invit&aacute; ahora <img src="img/portabilidadLandingReferidos/logo-whatsapp.png"></button>
+            </div>
+            <div class="row g-0">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span type="text" class="form-control pnt-input pnt-texto-truncado"
+                            aria-label="Link invitacion referidos"
+                            aria-describedby="copiar-link-invitacion-referidos">{{ linkInvitacion }}</span>
+                        <button class="input-group-text pnt-enfasis pnt-button pnt-button--tuenti--outlined">
+                            <span class="me-2" @click="copiarLinkAlPortapapeles">Copi&aacute; tu link</span><i
+                                class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div aria-live="polite" aria-atomic="true" class="bg-dark position-relative">
+                <div class="toast-container position-fixed p-2 bottom-0 end-0">
+                    <div id="toastMensajeExito" class="toast bottom-0 end-0 text-white bg-success align-items-center"
+                        role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                Link copiado al portapapeles <br> ¡Compartilo con tus amigos!
+                            </div>
+                            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="pnt-js-ver-mis-referidos">
+        <div class="card shadow mb-3 pnt-card pnt-card-truncate pnt-borde pnt-card--espaciado">
+            <div class="row mx-0 pt-4 g-0">
+                <div class="col text-center">
+                    <p class="pnt-descripcion pnt-titulo-ver-referidos pnt-texto--tuenti pnt-esta-oculto">Ac&aacute;
+                        pod&eacute;s
+                        ver a tus amigos
+                        invitados y revisar si ya son Tuenti. Record&aacute; que los 5GB de regalo
+                        les llegan 24 horas despu&aacute;s de ser Tuenti.</p>
+                    <div class="row g-0 pnt-padding-horizontal">
+                        <div class="pnt-contenedor-selecciona-estado">
+                            <span class="pnt-subtitulo">Selecciona un estado</span>
+                            <select v-model="estadoSeleccionado" class="form-select text-center pnt-button">
+                                <option value="">Todas</option>
+                                <option v-for="estadoMensaje in estadosMensaje" :value="estadoMensaje.estado">{{
+                                    estadoMensaje.mensaje }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row g-1 p-2">
+                        <div v-for="referido in referidosFiltrados"
+                            class="col-sm-12 col-md-6 animate__animated animate__fadeIn">
+                            <div class="card mb-1 shadow pnt-card pnt-card-referido">
+                                <div class="row card-body">
+                                    <section class="col">
+                                        <div v-if="referido.estado === 'CANCELADA'" class="pnt-portabilidad-cancelada">
+                                            <i class="fas fa-times-circle pnt-icono-estado "></i>
+                                            <div class="pnt-enfasis">Cancelada</div>
+                                        </div>
+                                        <div v-if="referido.estado === 'ABIERTA'|| referido.estado === 'REABIERTA'"
+                                            class="pnt-portabilidad-en-curso">
+                                            <i class="fas fa-info-circle pnt-icono-estado "></i>
+                                            <div class="pnt-enfasis">En curso</div>
+                                        </div>
+                                        <div v-if="referido.estado === 'CERRADA'" class="pnt-portabilidad-cerrada">
+                                            <i class="fas fa-check-circle pnt-icono-estado"></i>
+                                            <div class="pnt-enfasis">Ya es tuenti!</div>
+                                        </div>
+                                        <div v-if="referido.estado === 'ERROR'" class="pnt-portabilidad-error">
+                                            <i class="fas fa-exclamation-circle pnt-icono-estado"></i>
+                                            <div class="pnt-enfasis">Error</div>
+                                        </div>
+                                    </section>
+                                    <section class="col">
+                                        <div class="pb-2 pnt-card-numero-linea">
+                                            {{ referido.numeroLinea }}
+                                        </div>
+                                        <time class="pt-2 d-flex justify-content-center align-items-center">
+                                            {{ referido.fechaCreacion }}
+                                        </time>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="pnt-js-banner-promocion-referidos">
+        <div class="row text-white text-center g-0 pnt-background-promocion">
+            <div class="col p-2 mb-5">
+                <h1 class="pnt-enfasis text-uppercase p-2">Recomend&aacute; un amigo a Tuenti</h1>
+                <h2 class="pnt-enfasis text-uppercase p-2">Invit&aacute; a tus amig@s con #mastuentis Y llevate</h2>
+                <div class="pnt-contenedor-promocion p-2">
+                    <section class="text-dark fw-bold p-1 pnt-promocion">
+                        <span class="pnt-texto--tuenti">${{saldo}}</span> + <span>{{gigas}}GB</span>
+                    </section>
+                </div>
+                <h3 class="text-uppercase p-3 pnt-enfasis">y ell@s se llevan 5gb de regalo</h3>
+            </div>
+        </div>
+    </template>
+
+    <script src="js/app/app.js?version=<VERSION>"></script>
+    <script src="js/app/service/utils.js?version=<VERSION>"></script>
+    <script src="js/app/service/referido.js?version=<VERSION>"></script>
+
+    <script src="vendor/vue/vue.js"></script>
+    <script src="vendor/vee-validate/vee-validate.min.js" type="text/javascript"></script>
+    <script src="vendor/vee-validate/vee-validate-locale.js" type="text/javascript"></script>
+    <script src="vendor/axios/axios.min.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+    <script src="js/app/veeValidateConfig.js?version=<VERSION>" type="text/javascript"></script>
+    <script src="js/app/ui/component/nuevaLandingMasTuentis/nuevaLandingReferidos.js?version=<VERSION>"></script>
+    <script src="js/app/ui/component/nuevaLandingMasTuentis/bannerPromocionReferidos.js?version=<VERSION>"></script>
+    <script src="js/app/ui/component/portabilidadInputSpinner.js?version=<VERSION>"></script>
+    <script src="js/app/ui/component/nuevaLandingMasTuentis/generadorLinkReferidos.js?version=<VERSION>"></script>
+    <script src="js/app/ui/component/nuevaLandingMasTuentis/pasateATuenti.js?version=<VERSION>"></script>
+    <script src="js/app/ui/component/nuevaLandingMasTuentis/linkInvitacionReferidos.js?version=<VERSION>"></script>
+    <script src="js/app/ui/component/nuevaLandingMasTuentis/verMisReferidos.js?version=<VERSION>"
+        type="module"></script>
+</body>
+
+</html>
